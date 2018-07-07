@@ -24,6 +24,7 @@ namespace GoogleARCore.Examples.HelloAR
     using GoogleARCore;
     using GoogleARCore.Examples.Common;
     using UnityEngine;
+    using UnityEngine.UI;
 
 #if UNITY_EDITOR
     // Set up touch input propagation while using Instant Preview in the editor.
@@ -70,12 +71,29 @@ namespace GoogleARCore.Examples.HelloAR
         /// True if the app is in the process of quitting due to an ARCore connection error, otherwise false.
         /// </summary>
         private bool m_IsQuitting = false;
+        private bool m_IsStart = false;
 
+        private Transform canvas;
+
+        public void StartMenu(){
+            canvas.GetChild(0).gameObject.SetActive(false);
+            this.m_IsStart = true;
+        }
+
+        public void Start(){
+            canvas = GameObject.Find("Canvas").transform;
+            canvas.GetChild(0).GetChild(0).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ StartMenu(); } );
+        }
+        
         /// <summary>
         /// The Unity Update() method.
         /// </summary>
         public void Update()
         {
+            if(!m_IsStart){
+                return;
+            }
+
             _UpdateApplicationLifecycle();
 
             // Hide snackbar when currently tracking at least one plane.

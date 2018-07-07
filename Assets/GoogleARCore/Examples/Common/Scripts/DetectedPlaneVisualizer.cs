@@ -152,7 +152,6 @@ namespace GoogleARCore.Examples.Common
             {
                 m_MeshColors.Add(Color.clear);
             }
-
             // Feather distance 0.2 meters.
             const float featherLength = 0.2f;
 
