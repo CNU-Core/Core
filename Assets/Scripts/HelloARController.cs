@@ -94,8 +94,6 @@ namespace GoogleARCore.Examples.HelloAR
                 return;
             }
 
-            _UpdateApplicationLifecycle();
-
             // Hide snackbar when currently tracking at least one plane.
             Session.GetTrackables<DetectedPlane>(m_AllPlanes);
             bool showSearchingUI = true;
