@@ -95,6 +95,7 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         public void Update()
         {
+            // 시작화면인지 아닌지 확인
             if(!m_IsStart){
                 return;
             }
