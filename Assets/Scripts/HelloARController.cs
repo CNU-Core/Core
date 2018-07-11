@@ -57,6 +57,11 @@ namespace GoogleARCore.Examples.HelloAR
         public GameObject SearchingForPlaneUI;
 
         /// <summary>
+        /// A gameobject parenting UI for displaying the "scanning for planes" view.
+        /// </summary>
+        public GameObject ScanningForPlaneUI;
+
+        /// <summary>
         /// The rotation in degrees need to apply to model when the Andy model is placed.
         /// </summary>
         private const float k_ModelRotation = 180.0f;
@@ -90,6 +95,7 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         public void Update()
         {
+            // 시작화면인지 아닌지 확인
             if(!m_IsStart){
                 return;
             }
@@ -107,6 +113,7 @@ namespace GoogleARCore.Examples.HelloAR
             }
 
             SearchingForPlaneUI.SetActive(showSearchingUI);
+            ScanningForPlaneUI.SetActive(!showSearchingUI);
 
             // If the player has not touched the screen, we are done with this update.
             Touch touch;
