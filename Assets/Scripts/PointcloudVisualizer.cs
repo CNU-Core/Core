@@ -47,15 +47,18 @@ namespace GoogleARCore.Examples.Common
         /// </summary>
         public void Update()
         {
+            // 점 구름을 그리려면 데이터를 입력합니다.
             // Fill in the data to draw the point cloud.
             if (Frame.PointCloud.IsUpdatedThisFrame)
             {
+                //메쉬 정점에 대한 점 구름 점을 복사합니다.
                 // Copy the point cloud points for mesh verticies.
                 for (int i = 0; i < Frame.PointCloud.PointCount; i++)
                 {
                     m_Points[i] = Frame.PointCloud.GetPoint(i);
                 }
-
+                
+                // 메쉬 삽입물 배열을 업데이트합니다.
                 // Update the mesh indicies array.
                 int[] indices = new int[Frame.PointCloud.PointCount];
                 for (int i = 0; i < Frame.PointCloud.PointCount; i++)

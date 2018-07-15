@@ -25,6 +25,7 @@ namespace GoogleARCore.Examples.Common
     using UnityEngine;
 
     /// <summary>
+    /// Unity장면에서 단일 DetectedPlane를 시각화합니다.
     /// Visualizes a single DetectedPlane in the Unity scene.
     /// </summary>
     public class DetectedPlaneVisualizer : MonoBehaviour
@@ -52,6 +53,7 @@ namespace GoogleARCore.Examples.Common
 
         private DetectedPlane m_DetectedPlane;
 
+        // 메쉬가 모든 프레임을 업데이트하지 않도록 이전 프레임의 메쉬 폴리곤을 보관합니다.
         // Keep previous frame's mesh polygon to avoid mesh update every frame.
         private List<Vector3> m_PreviousFrameMeshVertices = new List<Vector3>();
         private List<Vector3> m_MeshVertices = new List<Vector3>();
@@ -100,6 +102,7 @@ namespace GoogleARCore.Examples.Common
         }
 
         /// <summary>
+        /// DetectedPlaneVisualizer를 DetectedPlane로 초기화합니다.
         /// Initializes the DetectedPlaneVisualizer with a DetectedPlane.
         /// </summary>
         /// <param name="plane">The plane to vizualize.</param>
@@ -113,6 +116,7 @@ namespace GoogleARCore.Examples.Common
         }
 
         /// <summary>
+        /// 메쉬를 벡터 3및 평면의 중심 위치 목록으로 업데이트합니다.
         /// Update mesh with a list of Vector3 and plane's center position.
         /// </summary>
         private void _UpdateMeshIfNeeded()
@@ -135,6 +139,7 @@ namespace GoogleARCore.Examples.Common
 
             int planePolygonCount = m_MeshVertices.Count;
 
+            //다음 코드는 아래 나온 것처럼 폴리곤을 폴리곤 두개가 있는 메쉬로 변환하고, 내부 폴리곤은 100%불투명도로 렌더링 한 후 불투명도가 0%인 외부 폴리곤으로 페이드 아웃합니다. 다이어그램에 표시된 색인은 아래 주석에 사용됩니다.
             // The following code converts a polygon to a mesh with two polygons, inner
             // polygon renders with 100% opacity and fade out to outter polygon with opacity 0%, as shown below.
             // The indices shown in the diagram are used in comments below.
@@ -163,7 +168,7 @@ namespace GoogleARCore.Examples.Common
             for (int i = 0; i < planePolygonCount; ++i)
             {
                 Vector3 v = m_MeshVertices[i];
-
+                // 평면 중심에서 현재 점까지 벡터
                 // Vector from plane center to current point
                 Vector3 d = v - m_PlaneCenter;
 
