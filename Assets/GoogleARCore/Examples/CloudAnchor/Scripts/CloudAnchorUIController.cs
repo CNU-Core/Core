@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GoogleARCore.Examples.CloudAnchor
+namespace GoogleARCore.Examples.CloudAnchors
 {
     using System.Collections.Generic;
     using GoogleARCore;
@@ -28,7 +28,7 @@ namespace GoogleARCore.Examples.CloudAnchor
     using UnityEngine.UI;
 
     /// <summary>
-    /// Controller managing UI for the Cloud Anchor Example.
+    /// Controller managing UI for the Cloud Anchors Example.
     /// </summary>
     public class CloudAnchorUIController : MonoBehaviour
     {

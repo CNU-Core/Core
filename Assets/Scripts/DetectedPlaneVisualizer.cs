@@ -21,6 +21,7 @@
 namespace GoogleARCore.Examples.Common
 {
     using System.Collections.Generic;
+    using GoogleARCore.Examples.HelloAR;
     using GoogleARCore;
     using UnityEngine;
 
@@ -30,6 +31,11 @@ namespace GoogleARCore.Examples.Common
     public class DetectedPlaneVisualizer : MonoBehaviour
     {
         private static int s_PlaneCount = 0;
+        
+        /// <summary>
+        /// Controller의 정보를 갖고있는 변수
+        /// </summary>
+        private GameObject m_Controller;
 
         private readonly Color[] k_PlaneColors = new Color[]
         {
@@ -72,6 +78,7 @@ namespace GoogleARCore.Examples.Common
         {
             m_Mesh = GetComponent<MeshFilter>().mesh;
             m_MeshRenderer = GetComponent<UnityEngine.MeshRenderer>();
+            m_Controller = GameObject.Find("Controller");
         }
 
         /// <summary>
@@ -111,33 +118,43 @@ namespace GoogleARCore.Examples.Common
 
             Update();
         }
-        /// <summary>
-        /// 모서리마다의 각 Vertor3를 찾는다.
-        /// </summary>
-        private void _FindEdge(){
-            Vector3 leftTop = new Vector3(100,0,-100);
-            Vector3 rightTop = new Vector3(-100,0,-100);
-            Vector3 leftBottom = new Vector3(100,0,100); 
-            Vector3 rightBottom = new Vector3(-100,0,100);
-            foreach(Vector3 vertex in m_MeshVertices){
-                // 좌측 상단 확인
-                if(vertex.x < leftTop.x && vertex.z > leftTop.z){
-                    leftTop = vertex;
-                }
-                // 우측 상단 확인
-                if(vertex.x > rightTop.x && vertex.z > rightTop.z){
-                    rightTop = vertex;
-                }
-                // 좌측 하단 확인
-                if(vertex.x < leftBottom.x && vertex.z < leftBottom.z){
-                    leftBottom = vertex;
-                }
-                // 우측 하단 확인
-                if(vertex.x > rightBottom.x && vertex.z < rightBottom.z){
-                    rightBottom = vertex;
-                }
-            }
-        }
+        // /// <summary>
+        // /// 모서리마다의 각 Vertor3를 찾는다.
+        // /// </summary>
+        // public void _FindEdge(GameObject andy){
+        //     Debug.Log("=====Find Edge=====");
+        //     Vector3 leftTop = new Vector3(100,0,-100);
+        //     Vector3 rightTop = new Vector3(-100,0,-100);
+        //     Vector3 leftBottom = new Vector3(100,0,100); 
+        //     Vector3 rightBottom = new Vector3(-100,0,100);
+        //     foreach(Vector3 vertex in m_MeshVertices){
+        //         // 좌측 상단 확인
+        //         if(vertex.x < leftTop.x && vertex.z > leftTop.z){
+        //             leftTop = vertex;
+        //         }
+        //         // 우측 상단 확인
+        //         if(vertex.x > rightTop.x && vertex.z > rightTop.z){
+        //             rightTop = vertex;
+        //         }
+        //         // 좌측 하단 확인
+        //         if(vertex.x < leftBottom.x && vertex.z < leftBottom.z){
+        //             leftBottom = vertex;
+        //         }
+        //         // 우측 하단 확인
+        //         if(vertex.x > rightBottom.x && vertex.z < rightBottom.z){
+        //             rightBottom = vertex;
+        //         }
+        //     }
+        //     Debug.Log("LeftTop: " + leftTop);
+        //     Debug.Log("RightTop: " + rightTop);
+        //     Debug.Log("leftBottom: " + leftBottom);
+        //     Debug.Log("rightBottom: " + rightBottom);
+        //     m_Controller.GetComponent<HelloARController>().leftTop = leftTop;
+        //     m_Controller.GetComponent<HelloARController>().rightTop = rightTop;
+        //     m_Controller.GetComponent<HelloARController>().leftBottom = leftBottom;
+        //     m_Controller.GetComponent<HelloARController>().rightBottom = rightBottom;
+        // }
+
         /// <summary>
         /// Update mesh with a list of Vector3 and plane's center position.
         /// </summary>
@@ -145,11 +162,11 @@ namespace GoogleARCore.Examples.Common
         {
             m_DetectedPlane.GetBoundaryPolygon(m_MeshVertices);
 
-            foreach(Vector3 element in m_MeshVertices){
-                Debug.Log(element);
-            }
+            // foreach(Vector3 element in m_MeshVertices){
+            //     Debug.Log(element);
+            // }
 
-            Debug.Log("=============End===============");
+            // Debug.Log("=============End===============");
             if (_AreVerticesListsEqual(m_PreviousFrameMeshVertices, m_MeshVertices))
             {
                 return;

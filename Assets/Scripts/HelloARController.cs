@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
 // <copyright file="HelloARController.cs" company="Google">
 //
 // Copyright 2017 Google Inc. All Rights Reserved.
@@ -61,6 +61,8 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         public GameObject ScanningForPlaneUI;
 
+        public GameObject door;
+
         /// <summary>
         /// The rotation in degrees need to apply to model when the Andy model is placed.
         /// </summary>
@@ -88,6 +90,7 @@ namespace GoogleARCore.Examples.HelloAR
         public void Start(){
             canvas = GameObject.Find("Canvas").transform;
             canvas.GetChild(0).GetChild(0).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ StartMenu(); } );
+            ScanningForPlaneUI.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ MakeRespawn();});
         }
         
         /// <summary>
@@ -155,7 +158,29 @@ namespace GoogleARCore.Examples.HelloAR
             }
         }
 
+        // /// <summary>
+        // /// 스캔완료 버튼을 누를 시 모서리를 알려주는 함수
+        // /// </summary>
+        // private void CheckEdge(){
+        //     DetectedPlanePrefab.GetComponent<DetectedPlaneVisualizer>()._FindEdge(AndyAndroidPrefab);
+        //     Debug.Log("Main LeftTop: " + leftTop);
+        //     Debug.Log("Main RightTop: " + rightTop);
+        //     Debug.Log("Main leftBottom: " + leftBottom);
+        //     Debug.Log("Main rightBottom: " + rightBottom);
+        // }
+
         /// <summary>
+        /// 스캔완료 버튼을 누를 시 가동되는 함수
+        /// </summary>
+        private void MakeRespawn(){
+            Debug.Log("버튼눌림");
+            GameObject doorPreb = GameObject.Instantiate(door, Vector3.forward, Quaternion.identity);
+            Debug.Log("생성됨");
+            GameObject.Find("Plane Generator").GetComponent<DetectedPlaneGenerator>().InitRespawn(doorPreb);
+            Debug.Log("버튼종료");
+        }
+
+        /// <summary> 
         /// Check and update the application lifecycle.
         /// </summary>
         private void _UpdateApplicationLifecycle()

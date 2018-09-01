@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300574, g: 0.49219483, b: 0.57192385, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300598, g: 0.4921947, b: 0.5719239, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -229,6 +229,16 @@ Prefab:
     - target: {fileID: 1772147192650458, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
       propertyPath: m_Name
       value: ARCore Device
+      objectReference: {fileID: 0}
+    - target: {fileID: 114963366853050710, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 2}
+      propertyPath: m_Device
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114963366853050710, guid: c10877f7cd5764de18d46d7b777d1faa,
+        type: 2}
+      propertyPath: m_PoseSource
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
@@ -562,6 +572,7 @@ MonoBehaviour:
     type: 2}
   SearchingForPlaneUI: {fileID: 1133631540}
   ScanningForPlaneUI: {fileID: 932607011}
+  door: {fileID: 1278988728844826, guid: 43791a65771d143c1b72031273bcba33, type: 2}
 --- !u!1 &847868830
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +754,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1133631540}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
