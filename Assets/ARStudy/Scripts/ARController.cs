@@ -54,7 +54,7 @@ public class ARController : MonoBehaviour {
 			GameObject detectedPlane = Instantiate(DetectedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
 
 			// 이 함수는 detectedPlane와 mesh와 접촉되어 변경된 vertex들의 위치를 설정 
-			detectedPlane.GetComponent<DetectedPlaneVisualizer>().Initialize(m_NewDetectedPlanes[i]);
+			// detectedPlane.GetComponent<DetectedPlaneVisualizer>().Initialize(m_NewDetectedPlanes[i]);
 		}
 		ProcessTouches();
 	}
