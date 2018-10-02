@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/ARCoreBackUp.unity
+    path: Assets/ARSurvive/Scenes/ARSurvive.unity
     guid: e6a6fa04348cb45c9b0221eb19c946da
   - enabled: 1
-    path: Assets/ARSurvive/Scenes/StartARCore.unity
+    path: Assets/ARStudy/Scenes/StartARCore.unity
     guid: 8b9e116dcfa9849ec8c5ef11e98f4b47
+  - enabled: 1
+    path: Assets/ARStudy/Scenes/Forest.unity
+    guid: 90ff20ee73d7447d381a44a1302890c9
   m_configObjects: {}

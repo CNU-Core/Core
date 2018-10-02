@@ -27,7 +27,7 @@ public class InterdimensionalTransport : MonoBehaviour {
 	
 	bool GetIsInFront(){
 		Vector3 pos = transform.InverseTransformPoint(device.position);
-
+		
 		return pos.z >= 0 ? true : false;
 	}
 
