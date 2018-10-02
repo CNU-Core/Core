@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a9747f332da48461081dfc29e2c94015, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300598, g: 0.4921947, b: 0.5719239, a: 1}
+  m_IndirectSpecularColor: {r: 0.3242204, g: 0.28910092, b: 0.36799607, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -194,54 +194,44 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4442908887562770, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
+    - target: {fileID: 4472704516242258, guid: efe056a4f5b3840e88d53de3be55b95c, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4442908887562770, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
+    - target: {fileID: 4472704516242258, guid: efe056a4f5b3840e88d53de3be55b95c, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4442908887562770, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
+    - target: {fileID: 4472704516242258, guid: efe056a4f5b3840e88d53de3be55b95c, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4442908887562770, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
+    - target: {fileID: 4472704516242258, guid: efe056a4f5b3840e88d53de3be55b95c, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4442908887562770, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
+    - target: {fileID: 4472704516242258, guid: efe056a4f5b3840e88d53de3be55b95c, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4442908887562770, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
+    - target: {fileID: 4472704516242258, guid: efe056a4f5b3840e88d53de3be55b95c, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4442908887562770, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
+    - target: {fileID: 4472704516242258, guid: efe056a4f5b3840e88d53de3be55b95c, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4442908887562770, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
+    - target: {fileID: 4472704516242258, guid: efe056a4f5b3840e88d53de3be55b95c, type: 2}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1772147192650458, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
-      propertyPath: m_Name
-      value: ARCore Device
-      objectReference: {fileID: 0}
-    - target: {fileID: 114963366853050710, guid: c10877f7cd5764de18d46d7b777d1faa,
-        type: 2}
-      propertyPath: m_Device
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114963366853050710, guid: c10877f7cd5764de18d46d7b777d1faa,
-        type: 2}
-      propertyPath: m_PoseSource
-      value: 6
+    - target: {fileID: 1786498952693228, guid: efe056a4f5b3840e88d53de3be55b95c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c10877f7cd5764de18d46d7b777d1faa, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: efe056a4f5b3840e88d53de3be55b95c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &334845386
 GameObject:
@@ -573,7 +563,7 @@ MonoBehaviour:
     type: 2}
   SearchingForPlaneUI: {fileID: 1133631540}
   ScanningForPlaneUI: {fileID: 932607011}
-  door: {fileID: 1278988728844826, guid: 43791a65771d143c1b72031273bcba33, type: 2}
+  door: {fileID: 1894295154843482, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
 --- !u!1 &847868830
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +677,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 847868830}
 --- !u!20 &896679035 stripped
 Camera:
-  m_PrefabParentObject: {fileID: 20155940112608238, guid: c10877f7cd5764de18d46d7b777d1faa,
+  m_PrefabParentObject: {fileID: 20732482437951632, guid: efe056a4f5b3840e88d53de3be55b95c,
     type: 2}
   m_PrefabInternal: {fileID: 97747990}
 --- !u!1 &932607011

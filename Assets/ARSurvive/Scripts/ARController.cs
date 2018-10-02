@@ -39,6 +39,8 @@ namespace ARSurvive
         [SerializeField]
         private bool PlayingLoginView = true;
 
+
+        [Header("=========== ARCore Controller 설정 ============")]
         /// <summary>
         /// The first-person camera being used to render the passthrough camera image (i.e. AR background).
         /// </summary>
