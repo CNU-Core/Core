@@ -110,3 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af6b407bc5db24be4b0fb2424de32744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  savedVertices: []
