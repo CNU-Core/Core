@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class InterdimensionalTransport : MonoBehaviour {
+public class Portal : MonoBehaviour {
 
 	public Material[] materials;
 
