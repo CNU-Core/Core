@@ -12,6 +12,8 @@ public class InterdimensionalTransport : MonoBehaviour {
 	bool wasInFront;
 	bool inOtherWorld;
 
+	bool hasCollided;
+
 	// Use this for initialization
 	void Start () {
 		SetMaterials(false);
@@ -26,7 +28,9 @@ public class InterdimensionalTransport : MonoBehaviour {
 	}
 	
 	bool GetIsInFront(){
-		Vector3 pos = transform.InverseTransformPoint(device.position);
+		Vector3 worldsPos = device.position + device.forward * Camera.main.nearClipPlane;
+
+		Vector3 pos = transform.InverseTransformPoint(worldsPos);
 		
 		return pos.z >= 0 ? true : false;
 	}
@@ -35,11 +39,20 @@ public class InterdimensionalTransport : MonoBehaviour {
 		if(other.transform != device)
 			return;
 
-			wasInFront = GetIsInFront();
+		wasInFront = GetIsInFront();
+		hasCollided = true;
 	}
-	void OnTriggerStay(Collider other){
+	void OnTriggerExit(Collider other){
 		if(other.transform != device)
 			return;
+
+		hasCollided = false;
+	}
+
+	void WhileCameraColliding(){
+		if(!hasCollided){
+			return;
+		}
 
 		bool isInFront = GetIsInFront();
 
@@ -50,13 +63,11 @@ public class InterdimensionalTransport : MonoBehaviour {
 		}
 		wasInFront = isInFront;
 	}
-
 	void OnDestroy(){
 		SetMaterials(true);
 	}
 
-	// Update is called once per frame
 	void Update () {
-		
+		WhileCameraColliding();	
 	}
 }
