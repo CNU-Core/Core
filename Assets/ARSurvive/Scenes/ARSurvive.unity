@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26074b15f9c13404d858bfedb8b8c00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayingLoginView: 0
+  PlayingLoginView: 1
   FirstPersonCamera: {fileID: 836205483}
   DetectedPlanePrefab: {fileID: 1654175882956584, guid: 6a35c744e5010405c847fad90282d2be,
     type: 2}
