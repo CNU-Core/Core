@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GoogleARCore.Examples.CloudAnchor
+namespace GoogleARCore.Examples.CloudAnchors
 {
     using System.Collections.Generic;
     using GoogleARCore;
@@ -33,7 +33,7 @@ namespace GoogleARCore.Examples.CloudAnchor
 #endif
 
     /// <summary>
-    /// Controller for the Cloud Anchor Example.
+    /// Controller for the Cloud Anchors Example.
     /// </summary>
     public class CloudAnchorController : MonoBehaviour
     {
@@ -249,10 +249,11 @@ namespace GoogleARCore.Examples.CloudAnchor
             var roomToResolve = UIController.GetRoomInputValue();
             if (roomToResolve == 0)
             {
-                UIController.ShowResolvingModeBegin("Invalid room code.");
+                UIController.ShowResolvingModeBegin("Anchor resolve failed due to invalid room code.");
                 return;
             }
 
+            UIController.SetRoomTextValue(roomToResolve);
             string ipAddress =
                 UIController.GetResolveOnDeviceValue() ? k_LoopbackIpAddress : UIController.GetIpAddressInputValue();
 
@@ -262,7 +263,8 @@ namespace GoogleARCore.Examples.CloudAnchor
             {
                 if (!found)
                 {
-                    UIController.ShowResolvingModeBegin("Invalid room code.");
+                    UIController.ShowResolvingModeBegin("Anchor resolve failed due to invalid room code, " +
+                                                        "ip address or network error.");
                 }
                 else
                 {
@@ -276,6 +278,8 @@ namespace GoogleARCore.Examples.CloudAnchor
         /// </summary>
         private void _HostLastPlacedAnchor()
         {
+#if !UNITY_IOS || ARCORE_IOS_SUPPORT
+
 #if !UNITY_IOS
             var anchor = (Anchor)m_LastPlacedAnchor;
 #else
@@ -294,6 +298,7 @@ namespace GoogleARCore.Examples.CloudAnchor
                 RoomSharingServer.SaveCloudAnchorToRoom(m_CurrentRoom, result.Anchor);
                 UIController.ShowHostingModeBegin("Cloud anchor was created and saved.");
             });
+#endif
         }
 
         /// <summary>

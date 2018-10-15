@@ -18,12 +18,12 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GoogleARCore.Examples.CloudAnchor
+namespace GoogleARCore.Examples.CloudAnchors
 {
     using System.Collections.Generic;
     using UnityEngine;
 
-#if UNITY_IOS
+#if ARCORE_IOS_SUPPORT
     using UnityEngine.XR.iOS;
     using UnityARUserAnchorComponent = UnityEngine.XR.iOS.UnityARUserAnchorComponent;
 #else
@@ -35,10 +35,9 @@ namespace GoogleARCore.Examples.CloudAnchor
     /// </summary>
     public class ARKitHelper
     {
-#if UNITY_IOS
+#if ARCORE_IOS_SUPPORT
         private List<ARHitTestResult> m_HitResultList = new List<ARHitTestResult>();
 #endif
-
         /// <summary>
         /// Performs a Raycast against a plane.
         /// </summary>
@@ -50,7 +49,7 @@ namespace GoogleARCore.Examples.CloudAnchor
         public bool RaycastPlane(Camera camera, float x, float y, out Pose hitPose)
         {
             hitPose = new Pose();
-#if UNITY_IOS
+#if ARCORE_IOS_SUPPORT
             var session = UnityARSessionNativeInterface.GetARSessionNativeInterface();
 
             var viewportPoint = camera.ScreenToViewportPoint(new Vector2(x, y));

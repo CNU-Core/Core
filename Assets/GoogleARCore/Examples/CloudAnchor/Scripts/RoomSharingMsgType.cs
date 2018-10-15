@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GoogleARCore.Examples.CloudAnchor
+namespace GoogleARCore.Examples.CloudAnchors
 {
     using UnityEngine.Networking;
 

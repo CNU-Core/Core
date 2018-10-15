@@ -18,9 +18,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GoogleARCore.Examples.CloudAnchor
+namespace GoogleARCore.Examples.CloudAnchors
 {
     using System;
+    using UnityEngine;
     using UnityEngine.Networking;
 
     /// <summary>
@@ -57,6 +58,8 @@ namespace GoogleARCore.Examples.CloudAnchor
             m_RoomId = roomId;
             RegisterHandler(MsgType.Connect, OnConnected);
             RegisterHandler(RoomSharingMsgType.AnchorIdFromRoomResponse, OnGetAnchorIdFromRoomResponse);
+            RegisterHandler(MsgType.Disconnect, OnDisconnected);
+            RegisterHandler(MsgType.Error, OnError);
             Connect(ipAddress, 8888);
         }
 
@@ -75,13 +78,44 @@ namespace GoogleARCore.Examples.CloudAnchor
         }
 
         /// <summary>
+        /// Handles when there is an error connecting to the server.
+        /// </summary>
+        /// <param name="networkMessage">Error message.</param>
+        private void OnError(NetworkMessage networkMessage)
+        {
+            Debug.Log("Error connecting to Room Sharing Server");
+            if (m_GetAnchorIdFromRoomCallback != null)
+            {
+                m_GetAnchorIdFromRoomCallback(false, null);
+            }
+        }
+
+        /// <summary>
+        /// Handles when there is disconnection from the server.
+        /// </summary>
+        /// <param name="networkMessage">Disconnection message.</param>
+        private void OnDisconnected(NetworkMessage networkMessage)
+        {
+            Debug.Log("Disconnected from Room Sharing Server");
+            if (m_GetAnchorIdFromRoomCallback != null)
+            {
+                m_GetAnchorIdFromRoomCallback(false, null);
+            }
+        }
+
+        /// <summary>
         /// Handles the resolve room response from server.
         /// </summary>
         /// <param name="networkMessage">The resolve room response message.</param>
         private void OnGetAnchorIdFromRoomResponse(NetworkMessage networkMessage)
         {
             var response = networkMessage.ReadMessage<AnchorIdFromRoomResponseMessage>();
-            m_GetAnchorIdFromRoomCallback(response.Found, response.AnchorId);
+            if (m_GetAnchorIdFromRoomCallback != null)
+            {
+                m_GetAnchorIdFromRoomCallback(response.Found, response.AnchorId);
+            }
+
+            m_GetAnchorIdFromRoomCallback = null;
         }
     }
 }
