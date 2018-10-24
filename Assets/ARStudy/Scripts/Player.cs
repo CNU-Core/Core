@@ -4,9 +4,20 @@ using UnityEngine;
  
 public class Player : MonoBehaviour {
  
+    // 구조체 정보.
+    public struct PINFO
+    {
+        public float MAX_HP;            // 체력의 최대치.
+        public float HP;                // 현재 체력
+        public float BulletPower;       // 총알의 힘.
+        public float MoveSpeed;         // 움직임 스피드.
+        public bool Life;               // 플레이어의 생명.
+    }
+ 
     public float Speed;         // 움직이는 스피드.
     public float AttackGap;     // 총알이 발사되는 간격.
  
+    private PINFO pInfo;        // 플레이어 정보.
     private Transform Vec;      // 카메라 벡터.
     private Vector3 MovePos;    // 플레이어 움직임에 대한 변수.
  
@@ -14,16 +25,28 @@ public class Player : MonoBehaviour {
  
     void Init()
     {
+        // 구조체 정보 초기화.
+        pInfo.MAX_HP        = 100;
+        pInfo.HP            = pInfo.MAX_HP;
+        pInfo.BulletPower   = 20;
+        pInfo.MoveSpeed     = 5;
+        pInfo.Life          = true;
+ 
         //공개.
         AttackGap = 0.2f;
  
         // 비공개
         MovePos = Vector3.zero;
         ContinuouFire = true;
+ 
+        // 플레이어 정보갱신.
+        ObjManager.Call().PlayerInfoUpdate(pInfo);
     }
  
     void Start()
     {
+        // 총알 생성 요청.
+        ObjManager.Call().SetObject("Bullet");
         Vec = GameObject.Find("CameraVector").transform;
  
         Init();
@@ -51,7 +74,7 @@ public class Player : MonoBehaviour {
         else
             return;
  
-        transform.Translate(Vector3.forward * Time.deltaTime * Speed * ButtonDown);
+        transform.Translate(Vector3.forward * Time.deltaTime * pInfo.MoveSpeed * ButtonDown);
     }
  
     // 플레이어 회전.
@@ -71,6 +94,13 @@ public class Player : MonoBehaviour {
             StartCoroutine("NextFire");
         else if (Input.GetButtonUp("Jump")) 
             ContinuouFire = false;
+ 
+        if (Input.GetKeyDown(KeyCode.Q))
+            ObjManager.Call().MemoryDelete();
+ 
+     //   if (Input.GetKeyDown(KeyCode.E))
+     //       ObjManager.Call().CreateObject("Bullet", 20);
+ 
     }
  
     // 연속발사.
@@ -81,7 +111,7 @@ public class Player : MonoBehaviour {
         {
             // 총알을 리스트에서 가져온다.
             BulletInfoSetting(ObjManager.Call().GetObject("Bullet"));
-            yield return new WaitForSeconds(AttackGap);                    // 시간지연.
+            yield return new WaitForSeconds(AttackGap);
         }
     }
  

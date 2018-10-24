@@ -4,6 +4,8 @@ using UnityEngine;
  
 public class Bullet : MonoBehaviour {
  
+    public float BulletPower;
+ 
     // 총알의 움직임 및 일정 시간뒤 비 활성화.
     IEnumerator MoveBullet()
     {
@@ -20,5 +22,17 @@ public class Bullet : MonoBehaviour {
  
         // 총알 비활성화.
         gameObject.SetActive(false);
+    }
+    
+    // 충돌체크
+    void OnTriggerEnter(Collider _Col)
+    {
+        // 총알이 적과 충돌.
+        if (_Col.transform.CompareTag("Enemy"))
+        {
+            // 총알에 맞은 객체의 Enemy컴포넌트를 가져와 Enemy에게 데미지를 준다.
+            _Col.GetComponent<Enemy>().InfoUpdate(BulletPower);
+            gameObject.SetActive(false);
+        }
     }
 }
