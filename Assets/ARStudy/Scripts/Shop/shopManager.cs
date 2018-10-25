@@ -47,4 +47,48 @@ public class ShopManager : MonoBehaviour {
 		instance = this;
 		DontDestroyOnLoad(gameObject);
 	}
+public void setting(){
+		if(Gun_menu.active){
+			if(!preview_Camvas.active){//화면이 꺼져있는 경우
+				preview_Camvas.SetActive(!preview_Camvas.active);	
+				select_name.GetComponent<Text>().text = gun_name;
+				select_explain.GetComponent<Text>().text = gun_explain;
+				select_price.GetComponent<Text>().text = gun_price.ToString();
+				select_image.GetComponent<Image>().sprite = gun_image;
+				select_damage.GetComponent<Text>().text = gun_damage.ToString();
+				kor.GetComponent<Text>().text = "공격력 : ";
+			}else if(select_name.GetComponent<Text>().text!=gun_name){//화면이 켜져 있는데 선택한 gun이 아닌 경우
+				select_name.GetComponent<Text>().text = gun_name;
+				select_explain.GetComponent<Text>().text = gun_explain;
+				select_price.GetComponent<Text>().text = gun_price.ToString();
+				select_image.GetComponent<Image>().sprite = gun_image;
+				select_damage.GetComponent<Text>().text = gun_damage.ToString();
+				kor.GetComponent<Text>().text = "공격력 : ";
+			}else{//화면이 켜져 있는데 선택한 것일 경우
+				preview_Camvas.SetActive(false);
+			}
+		}else{
+			if(!preview_Camvas.active){//화면이 꺼져있는 경우
+
+				preview_Camvas.SetActive(!preview_Camvas.active);
+				select_name.GetComponent<Text>().text = potion_name;
+				select_explain.GetComponent<Text>().text = potion_explain;
+				select_price.GetComponent<Text>().text = potion_price.ToString();
+				select_image.GetComponent<Image>().sprite = potion_image;
+				select_heal.GetComponent<Text>().text = potion_heal.ToString();
+				kor.GetComponent<Text>().text = "회복력 : ";
+			}else if(select_name.GetComponent<Text>().text!=potion_name){//화면이 켜져 있는데 선택한 gun이 아닌 경우
+				select_name.GetComponent<Text>().text = potion_name;
+				select_explain.GetComponent<Text>().text = potion_explain;
+				select_price.GetComponent<Text>().text = potion_price.ToString();
+				select_image.GetComponent<Image>().sprite = potion_image;
+				select_heal.GetComponent<Text>().text = potion_heal.ToString();
+				kor.GetComponent<Text>().text = "회복력 : ";
+			}else{//화면이 켜져 있는데 선택한 것일 경우
+				preview_Camvas.SetActive(false);
+			}
+		}
+
+	}
+
 }
