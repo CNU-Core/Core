@@ -47,4 +47,4 @@ public class ShopManager : MonoBehaviour {
 		instance = this;
 		DontDestroyOnLoad(gameObject);
 	}
-	
+}
