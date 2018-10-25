@@ -91,4 +91,18 @@ public void setting(){
 
 	}
 
+	
+	public void active_menu(GameObject button){
+		if(button.GetComponentInChildren<Text>().text.Equals("무기")){
+			Gun_menu.SetActive(true);
+			Potoin_menu.SetActive(false);
+			preview_Camvas.SetActive(false);
+		}else{
+			Gun_menu.SetActive(false);
+			Potoin_menu.SetActive(true);
+			preview_Camvas.SetActive(false);
+		}
+	}
+
+
 }
