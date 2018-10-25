@@ -91,7 +91,6 @@ public void setting(){
 
 	}
 
-	
 	public void active_menu(GameObject button){
 		if(button.GetComponentInChildren<Text>().text.Equals("무기")){
 			Gun_menu.SetActive(true);
@@ -104,5 +103,13 @@ public void setting(){
 		}
 	}
 
+	public void allBuy_check(){
+		if(gunBuy_check==1 && potionBuy_check==1){
+			block.SetActive(true);
+			gunBuy_check=0;
+			potionBuy_check=0;
+		}
+
+	}
 
 }
