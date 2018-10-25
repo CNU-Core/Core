@@ -10,7 +10,14 @@ public class AKM : MonoBehaviour {
 	public int damage = 100;
 	public Sprite image;
 
-	
+	public void setData(){
+		ShopManager.Instance.gun_price = this.price;
+		ShopManager.Instance.gun_damage = this.damage;
+		ShopManager.Instance.gun_explain = this.explain;
+		ShopManager.Instance.gun_name = this.name;
+		ShopManager.Instance.gun_image = this.image;
+		ShopManager.Instance.setting();
+	}
 
 	public int Price{
 		get{
