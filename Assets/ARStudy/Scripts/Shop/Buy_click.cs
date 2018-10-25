@@ -9,6 +9,7 @@ public class Buy_click : MonoBehaviour {
 	public Button PotionButton;
 	public GameObject Select_menu;
 	public void buyClick(){
+		
 		if(GunMenu.active){
 			ShopManager.instance.gunBuy_check=1;
 			PotionMenu.SetActive(true);
