@@ -10,7 +10,6 @@ public class PotionRed : MonoBehaviour {
 	public int heal = 100;
 	public Sprite image;
 
-	
 
 	public int Price{
 		get{
