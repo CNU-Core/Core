@@ -1161,7 +1161,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2d411ab2ce0ae814b9a36586aa355bc9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c7e4edf7c096f3488135f9bdedae6f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1183,14 +1183,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 553206125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 997686d007f5f2c42b1c64c5764c3f56, type: 3}
+  m_Script: {fileID: 11500000, guid: d0a60fcfccd444444b9d4bd5d720c9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   explain: "\uC774\uAC83\uC740 AKM\uC774\uB2E4."
   price: 100
   name: AKM
   damage: 100
-  image: {fileID: 21300000, guid: 2d411ab2ce0ae814b9a36586aa355bc9, type: 3}
+  image: {fileID: 21300000, guid: 7c7e4edf7c096f3488135f9bdedae6f1, type: 3}
 --- !u!1 &577523295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,7 +1754,7 @@ MonoBehaviour:
   price: 200
   name: Blue
   heal: 200
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: e02b62553f4e1984ebf0ad3ec06f7440, type: 3}
 --- !u!114 &705091288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1826,7 +1826,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5c494ae618bf19e48b8f2bee6540ad49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e02b62553f4e1984ebf0ad3ec06f7440, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2040,7 +2040,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1f0f6c237586d174c87f48fbde008b80, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a1119e72184803f449155ba010f7ecf3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2069,7 +2069,7 @@ MonoBehaviour:
   price: 100
   name: Red
   heal: 100
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: a1119e72184803f449155ba010f7ecf3, type: 3}
 --- !u!114 &713729166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2648,7 +2648,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3590b8b9a6a84f343bc7b04d3124b9d6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dcda2bf4f9d909341ba7bd8f0f531289, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2670,9 +2670,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 855857967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: bb5f3abb68a246d4980b85229193d42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explain: "\uC774\uAC83\uC740 M416\uC774\uB2E4."
+  price: 200
+  name: M416
+  damage: 200
+  image: {fileID: 21300000, guid: dcda2bf4f9d909341ba7bd8f0f531289, type: 3}
 --- !u!114 &855857974
 MonoBehaviour:
   m_ObjectHideFlags: 0
