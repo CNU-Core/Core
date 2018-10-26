@@ -357,7 +357,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 88988311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6adf8ca6e053ce345933dc8e863fb9ee, type: 3}
+  m_Script: {fileID: 11500000, guid: a641de51bcaec7a4d86f7049fe1c62ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   show_Image: {fileID: 964163907}
@@ -1252,7 +1252,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 945b24c4c172a1a45b304054c82b47e4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bccfa40ddd538754fb2e43ad9ea0e345, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1547,7 +1547,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 658381406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f268e298e009aa4d965f832721e8626, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eb22eca0e0059d45ac6657b931e452e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Buy_Canvas: {fileID: 952935387}
@@ -1851,11 +1851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf906e81f8fb8c4b9ff5c3a8f750fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explain: "\uC774\uAC83\uC740 \uD30C\uB780 \uD3EC\uC158\uC774\uB2E4."
-  price: 200
-  name: Blue
-  heal: 200
-  image: {fileID: 21300000, guid: 5c494ae618bf19e48b8f2bee6540ad49, type: 3}
 --- !u!1 &709884799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,11 +2076,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d89672259e035e46bf32c5fd1e5af9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explain: "\uC774\uAC83\uC740 \uBE68\uAC04 \uD3EC\uC158\uC774\uB2E4."
-  price: 100
-  name: Red
-  heal: 100
-  image: {fileID: 21300000, guid: 1f0f6c237586d174c87f48fbde008b80, type: 3}
 --- !u!1 &724366045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,7 +2330,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 694885270}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.56076133
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2391,11 +2381,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997686d007f5f2c42b1c64c5764c3f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explain: "\uC774\uAC83\uC740 AKM\uC774\uB2E4."
-  price: 100
-  name: AKM
-  damage: 100
-  image: {fileID: 0}
 --- !u!1 &771944338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,7 +2601,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 855857974}
+      - m_Target: {fileID: 855857973}
         m_MethodName: setData
         m_Mode: 1
         m_Arguments:
@@ -2689,11 +2674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508fffc3d5d06f143a547f8925669f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explain: "\uC774\uAC83\uC740 M416\uC774\uB2E4."
-  price: 200
-  name: M416
-  damage: 200
-  image: {fileID: 21300000, guid: 3590b8b9a6a84f343bc7b04d3124b9d6, type: 3}
 --- !u!1 &873157821
 GameObject:
   m_ObjectHideFlags: 0
@@ -3334,7 +3314,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1068069622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e56610b34cae27b409a90f1d2ece7898, type: 3}
+  m_Script: {fileID: 11500000, guid: c0076e0f072b9ff4a814cbd2e383489c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gui_text: {fileID: 2082475289}
@@ -4495,11 +4475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997686d007f5f2c42b1c64c5764c3f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explain: "\uC774\uAC83\uC740 AKM\uC774\uB2E4."
-  price: 100
-  name: AKM
-  damage: 100
-  image: {fileID: 0}
 --- !u!114 &1749340071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5240,7 +5215,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 48008230f96c47742926c21a09d4d154, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1cc602e17feb8e249aa9129bb8185792, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5407,7 +5382,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2079314498}
-        m_MethodName: buyClick
+        m_MethodName: canvas_Off
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5418,7 +5393,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2079314497}
-        m_MethodName: canvas_Off
+        m_MethodName: buyClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5471,10 +5446,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2079314492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f268e298e009aa4d965f832721e8626, type: 3}
+  m_Script: {fileID: 11500000, guid: b721703b574f48645ab1455c4e41366e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Buy_Canvas: {fileID: 952935387}
+  GunMenu: {fileID: 1753926882}
+  PotionMenu: {fileID: 724366045}
+  GunButton: {fileID: 945567768}
+  PotionButton: {fileID: 1257943458}
+  Select_menu: {fileID: 1965441}
 --- !u!114 &2079314498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5483,14 +5462,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2079314492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71f5f60837687b044879e4c16ed718f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eb22eca0e0059d45ac6657b931e452e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GunMenu: {fileID: 1753926882}
-  PotionMenu: {fileID: 724366045}
-  GunButton: {fileID: 945567768}
-  PotionButton: {fileID: 1257943458}
-  Select_menu: {fileID: 1965441}
+  Buy_Canvas: {fileID: 952935387}
 --- !u!1 &2082475288
 GameObject:
   m_ObjectHideFlags: 0
