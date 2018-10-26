@@ -1747,9 +1747,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 705091285}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 7226711053aeb4540a75dc243e41d8ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explain: "\uC774\uAC83\uC740 \uD30C\uB780 \uD3EC\uC158\uC774\uB2E4."
+  price: 200
+  name: Blue
+  heal: 200
+  image: {fileID: 0}
 --- !u!114 &705091288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1789,7 +1794,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 705091291}
+      - m_Target: {fileID: 705091287}
         m_MethodName: setData
         m_Mode: 1
         m_Arguments:
@@ -2003,7 +2008,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 713729166}
+      - m_Target: {fileID: 713729165}
         m_MethodName: setData
         m_Mode: 1
         m_Arguments:
@@ -2057,9 +2062,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 713729160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e60fdf7b381ff6340ba25def14cd0398, type: 3}
+  m_Script: {fileID: 11500000, guid: dee9fec0c9bb5da429797cf78d3a5668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explain: "\uC774\uAC83\uC740 \uBE68\uAC04 \uD3EC\uC158\uC774\uB2E4."
+  price: 100
+  name: Red
+  heal: 100
+  image: {fileID: 0}
 --- !u!114 &713729166
 MonoBehaviour:
   m_ObjectHideFlags: 0
