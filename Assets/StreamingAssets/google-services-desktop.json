@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "394985141794",
+    "firebase_url": "https://ar-zombie-survive-93013241.firebaseio.com",
+    "project_id": "ar-zombie-survive-93013241",
+    "storage_bucket": "ar-zombie-survive-93013241.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394985141794:android:d31e4e7ed9882e3a",
+        "android_client_info": {
+          "package_name": "com.CNUCore.ARSurvive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394985141794-7m8r9dasfrbt0qg978mmjn3ag7e564t0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.CNUCore.ARSurvive",
+            "certificate_hash": "d78117ef0e9bd1919c8e8ea6f33834aa64be3e85"
+          }
+        },
+        {
+          "client_id": "394985141794-rntgbe5vhmvbqbvp20fpo9e8ie2f5dl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDejjVhXeiv9gsvPCkwFFEEWfzirVG90b0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394985141794-rntgbe5vhmvbqbvp20fpo9e8ie2f5dl6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
