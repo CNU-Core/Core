@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cube
+  - Enemy
+  - ARCore Device
   layers:
   - Default
   - TransparentFX
@@ -15,10 +17,10 @@ TagManager:
   - 
   - 
   - 
+  - Enemy
+  - Wreckage
   - 
-  - 
-  - 
-  - 
+  - ARCore Device
   - 
   - 
   - 
