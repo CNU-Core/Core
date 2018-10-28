@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15747947, g: 0.11225461, b: 0.14759964, a: 1}
+  m_IndirectSpecularColor: {r: 0.15747935, g: 0.11225457, b: 0.14759952, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1252,54 +1252,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1891325159}
   m_CullTransparentMesh: 0
---- !u!1001 &1922686906
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4233578642077724, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233578642077724, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233578642077724, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233578642077724, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233578642077724, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233578642077724, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233578642077724, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4233578642077724, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114498179163467390, guid: 2d7398a982c8a4b4cbf5522903714369,
-        type: 2}
-      propertyPath: Origin.Array.data[5]
-      value: 
-      objectReference: {fileID: 1300611964618398, guid: 0584839bceadb844fa31b1ca352056ba,
-        type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &2083512464
 GameObject:
   m_ObjectHideFlags: 0
