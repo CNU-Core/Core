@@ -15,7 +15,7 @@ public class EnemyArea : MonoBehaviour {
         CreateArea(AreaCount);
  
         // 에너미 생산 요청.
-        ObjManager.Call().SetObject("Enemy", AreaCount);
+        ObjManager.Call().SetObject("Enemy");
     }
  
     // 위치 랜덤 설정.
