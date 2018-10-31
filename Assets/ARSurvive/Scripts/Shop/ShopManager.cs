@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour {
 
 	public static ShopManager instance = null;
-	public int point = GamesManager.GM.point;
+	//public int point = GamesManager.Instance.point;
 	//GUN 
 	public int gun_price=0;
 	public int potion_price=0;
@@ -41,9 +41,6 @@ public class ShopManager : MonoBehaviour {
 			return instance;
 		}
 	}
-	void Start () {
-		current_poiont.GetComponent<Text>().text = point.ToString();
-	}
 	void Awake(){
 		if(instance!=null){
 			DestroyImmediate(gameObject);
@@ -52,10 +49,11 @@ public class ShopManager : MonoBehaviour {
 		instance = this;
 		DontDestroyOnLoad(gameObject);
 	}
-public void setting(){
-		if(Gun_menu.active){
-			if(!preview_Camvas.active){//화면이 꺼져있는 경우
-				preview_Camvas.SetActive(!preview_Camvas.active);	
+	
+	public void setting(){
+		if(Gun_menu.activeSelf){
+			if(!preview_Camvas.activeSelf){//화면이 꺼져있는 경우
+				preview_Camvas.SetActive(!preview_Camvas.activeSelf);	
 				select_name.GetComponent<Text>().text = gun_name;
 				select_explain.GetComponent<Text>().text = gun_explain;
 				select_price.GetComponent<Text>().text = gun_price.ToString();
@@ -73,9 +71,9 @@ public void setting(){
 				preview_Camvas.SetActive(false);
 			}
 		}else{
-			if(!preview_Camvas.active){//화면이 꺼져있는 경우
+			if(!preview_Camvas.activeSelf){//화면이 꺼져있는 경우
 
-				preview_Camvas.SetActive(!preview_Camvas.active);
+				preview_Camvas.SetActive(!preview_Camvas.activeSelf);
 				select_name.GetComponent<Text>().text = potion_name;
 				select_explain.GetComponent<Text>().text = potion_explain;
 				select_price.GetComponent<Text>().text = potion_price.ToString();

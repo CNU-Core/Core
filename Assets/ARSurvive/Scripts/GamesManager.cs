@@ -1,19 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GamesManager : MonoBehaviour {
 
 	// Use this for initialization
-	public static GamesManager GM = null;
+	public static GamesManager instance = null;
 
-	public int point = 0;
-	void Start () {
-		
+	public Text Current_point;
+	public int point = 1000;
+	public static GamesManager Instance{
+		get{
+			return instance;
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	void Awake(){
+		if(instance!=null){
+			DestroyImmediate(gameObject);
+			return;
+		}
+		instance = this;
+		DontDestroyOnLoad(gameObject);
+	}	
+
+	void Update(){
+		Current_point.GetComponent<Text>().text = point.ToString();
 	}
 }
