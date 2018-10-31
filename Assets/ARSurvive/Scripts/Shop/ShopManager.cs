@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour {
 
 	public static ShopManager instance = null;
+	public int point = GamesManager.GM.point;
 	//GUN 
 	public int gun_price=0;
 	public int potion_price=0;
@@ -29,6 +30,7 @@ public class ShopManager : MonoBehaviour {
 	public Image select_image;
 	public GameObject preview_Camvas;
 	public Text kor;
+	public Text current_poiont;
 	public GameObject Gun_menu;
 	public GameObject Potoin_menu;
 
@@ -38,6 +40,9 @@ public class ShopManager : MonoBehaviour {
 		get{
 			return instance;
 		}
+	}
+	void Start () {
+		current_poiont.GetComponent<Text>().text = point.ToString();
 	}
 	void Awake(){
 		if(instance!=null){

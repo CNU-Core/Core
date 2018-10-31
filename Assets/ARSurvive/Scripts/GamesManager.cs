@@ -5,6 +5,9 @@ using UnityEngine;
 public class GamesManager : MonoBehaviour {
 
 	// Use this for initialization
+	public static GamesManager GM = null;
+
+	public int point = 0;
 	void Start () {
 		
 	}
