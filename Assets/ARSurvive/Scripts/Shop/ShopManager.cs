@@ -48,9 +48,9 @@ public class ShopManager : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 	}
 public void setting(){
-		if(Gun_menu.active){
-			if(!preview_Camvas.active){//화면이 꺼져있는 경우
-				preview_Camvas.SetActive(!preview_Camvas.active);	
+		if(Gun_menu.activeSelf){
+			if(!preview_Camvas.activeSelf){//화면이 꺼져있는 경우
+				preview_Camvas.SetActive(!preview_Camvas.activeSelf);	
 				select_name.GetComponent<Text>().text = gun_name;
 				select_explain.GetComponent<Text>().text = gun_explain;
 				select_price.GetComponent<Text>().text = gun_price.ToString();
@@ -68,9 +68,9 @@ public void setting(){
 				preview_Camvas.SetActive(false);
 			}
 		}else{
-			if(!preview_Camvas.active){//화면이 꺼져있는 경우
+			if(!preview_Camvas.activeSelf){//화면이 꺼져있는 경우
 
-				preview_Camvas.SetActive(!preview_Camvas.active);
+				preview_Camvas.SetActive(!preview_Camvas.activeSelf);
 				select_name.GetComponent<Text>().text = potion_name;
 				select_explain.GetComponent<Text>().text = potion_explain;
 				select_price.GetComponent<Text>().text = potion_price.ToString();
