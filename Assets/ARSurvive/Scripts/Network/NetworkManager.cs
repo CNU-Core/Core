@@ -63,10 +63,12 @@ public class NetworkManager : MonoBehaviour {
 		if(!PlayGamesPlatform.Instance.IsAuthenticated()){
             Social.localUser.Authenticate(success =>
             {
+				// 로그인 성공
                 if (success) {
-					Debug.Log("Login 시도중..");
+					Debug.Log("Login 성공");
                     StartCoroutine(Login());
                 }
+				// 로그인 실패
                 else {
 					Debug.Log("On Click 구글 로그인에 실패하였습니다.");
                 }
@@ -78,7 +80,7 @@ public class NetworkManager : MonoBehaviour {
             Debug.Log("소셜 로컬유저 아이디: " + Social.localUser.id);
 		}
 	}
-
+	
 	IEnumerator Login(){
 		while (System.String.IsNullOrEmpty(((PlayGamesLocalUser)Social.localUser).GetIdToken()))
             yield return null;
