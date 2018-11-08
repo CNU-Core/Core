@@ -114,4 +114,39 @@ public class NetworkManager : MonoBehaviour {
         });
         Debug.Log("Login END. Check User");
 	}
+
+	// 점수를 Play Game에 저장
+	public void ReportScore(int score){
+		PlayGamesPlatform.Instance.ReportScore(score, GPGSIds.leaderboard_score, (bool success) =>
+		{
+			if(success){
+				Debug.Log("저장 성공");
+			}
+			else {
+				Debug.Log("저장 실패");
+			}
+		});
+	}
+
+	// Play Game의 리더보드 점수 확인
+	public void ShowLeaderboardUI(){
+		// 로그인이 되어 있지 않았다면, 로그인 후 리더보드 UI표시 요청
+		if(Social.localUser.authenticated == false){
+			Social.localUser.Authenticate((bool success) =>
+			{
+				if(success){
+					Debug.Log("리더보드 UI 가동");
+					Social.ShowLeaderboardUI();
+					return;
+				}
+				else {
+					Debug.Log("리더보드 UI 실패");
+					return;
+				}
+			});
+		}
+		else {
+			PlayGamesPlatform.Instance.ShowLeaderboardUI();
+		}
+	}
 }
