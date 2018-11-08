@@ -86,7 +86,7 @@ public class NetworkManager : MonoBehaviour {
 		string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken();
 
         auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
-        Firebase.Auth.Credential credential = Firebase.Auth.GoogleAuthProvider.GetCredential(idToken, null);
+        Credential credential = Firebase.Auth.GoogleAuthProvider.GetCredential(idToken, null);
         auth.SignInWithCredentialAsync(credential).ContinueWith(
         task =>
         {
@@ -100,31 +100,16 @@ public class NetworkManager : MonoBehaviour {
             {
                 Debug.Log("Task NewUser OK");
                 // User is now signed in.
-                Firebase.Auth.FirebaseUser newUser = task.Result;
-
+                FirebaseUser newUser = task.Result;
+				GameObject controller = GameObject.Find("Controller");
                 // Get the root reference location fo Database
                 user_Name = newUser.DisplayName;
                 user_ID = newUser.UserId;
                 Debug.Log("USER NAME : " + user_Name + ", USER EMAIL : " + newUser.Email + ", USER ID : " + newUser.UserId);
                 user_Ref.Child("users").Child(newUser.UserId).Child("name").SetValueAsync(user_Name);
-                // ScenesManager.getInstance().SceneChange("Main");
+				controller.GetComponent<ARSurvive.ARController>().StartMenu();
             }
         });
         Debug.Log("Login END. Check User");
-		// Debug.Log("Login 실행");
-		// Firebase.Auth.FirebaseUser user = auth.CurrentUser;
-		// if(user != null){
-		// 	Debug.Log("유저 정보 있음");
-        //     Transform controller = GameObject.Find("Controller").transform;
-		// 	string playerName = user.DisplayName;
-		// 	string uid = user.UserId;
-		// 	Debug.Log("Player Name: " + playerName);
-		// 	Debug.Log("User ID: " + uid);
-
-		// 	controller.gameObject.GetComponent<ARSurvive.ARController>().StartMenu();
-		// }
-		// else {
-		// 	Debug.Log("유저 정보 없음");
-		// }
 	}
 }
