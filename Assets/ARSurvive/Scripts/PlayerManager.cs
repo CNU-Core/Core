@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
 
+	private int player_Score;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,4 +15,18 @@ public class PlayerManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public int GetPlayerScore(){
+		return player_Score;
+	}
+	
+	public void SetPlayerScore(int score){
+		this.player_Score = score;
+	}
+
+	public void AddPlayerScore(int score){
+		this.player_Score += score;
+	}
+
+
 }
