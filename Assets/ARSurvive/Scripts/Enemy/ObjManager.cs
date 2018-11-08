@@ -27,6 +27,7 @@ public class ObjManager : MonoBehaviour {
     // 오브젝트를 받아 생성.
     public void SetObject( GameObject _Obj, int _Count, string _Name)
     {
+        Debug.Log(_Name + "현재 count는" + _Count);
         for (int i = 0; i < _Count; i++)
         {
             GameObject obj = Instantiate(_Obj) as GameObject;
@@ -38,6 +39,9 @@ public class ObjManager : MonoBehaviour {
             if(_Name == "Bullet"){ // 총알이 아니면 색을 랜덤으로 설정.
                 obj.transform.GetComponent<SphereCollider>().isTrigger = true;
             }
+            else if (_Name == "Enemy"){
+                Debug.Log("좀비생성");    
+            }
             else
                 obj.GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value, 1.0f);
  
@@ -47,6 +51,7 @@ public class ObjManager : MonoBehaviour {
  
     public void SetObject(string _Name, int _Count = 20)
     {
+        Debug.Log(_Name);
         GameObject obj = null;
         int Count = Origin.Length;
         for(int i = 0; i < Count; i++)

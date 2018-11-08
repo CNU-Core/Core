@@ -90,7 +90,7 @@ public class Player : MonoBehaviour {
     // 총알 키 체크.
     void KeyCheck()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump")) //스페이스바로 총알 발사
             StartCoroutine("NextFire");
         else if (Input.GetButtonUp("Jump")) 
             ContinuouFire = false;

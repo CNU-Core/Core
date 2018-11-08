@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
  
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("ARCore Device").transform;
+        player = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
  
     // 플레이어와의 거리를 체크.
