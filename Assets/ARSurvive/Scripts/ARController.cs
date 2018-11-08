@@ -93,7 +93,7 @@ namespace ARSurvive
 
         public void Start(){
             canvas = GameObject.Find("Canvas").transform;
-            canvas.GetChild(0).GetChild(0).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ StartMenu(); } );
+            // canvas.GetChild(0).GetChild(0).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ StartMenu(); } );
             ScanningForPlaneUI.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ MakeRespawn();});
 
             if(!this.PlayingLoginView){

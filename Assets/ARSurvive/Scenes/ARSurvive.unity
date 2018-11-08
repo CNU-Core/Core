@@ -5684,7 +5684,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1953478993}
-        m_MethodName: GoogleGameLogin
+        m_MethodName: OnClickGoogleGameLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6062,7 +6062,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1953478992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36f74c07fbc9046dcbe97d56775edab9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5418c858b99774d8fa2bb13ea4d44b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1953478994

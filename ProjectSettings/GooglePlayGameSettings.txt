@@ -5,5 +5,5 @@ and.BundleId=com.CNUCore.ARSurvive
 proj.classDir=Assets
 proj.ConstantsClassName=GPGSIds
 and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0a%3c%21--%0aGoogle+Play+game+services+IDs.%0aSave+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.%0a--%3e%0a%3cresources%3e%0a++%3c%21--+app_id+--%3e%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e394985141794%3c%2fstring%3e%0a++%3c%21--+package_name+--%3e%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.CNUCore.ARSurvive%3c%2fstring%3e%0a++%3c%21--+achievement+test1+--%3e%0a++%3cstring+name%3d%22achievement_test1%22+translatable%3d%22false%22%3eCgkIouzLt78LEAIQAQ%3c%2fstring%3e%0a%3c%2fresources%3e%0a
-and.ClientId=394985141794-7m8r9dasfrbt0qg978mmjn3ag7e564t0.apps.googleusercontent.com
+and.ClientId=394985141794-rntgbe5vhmvbqbvp20fpo9e8ie2f5dl6.apps.googleusercontent.com
 android.SetupDone=true
