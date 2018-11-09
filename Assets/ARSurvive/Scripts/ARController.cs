@@ -152,6 +152,20 @@ namespace ARSurvive
             HUDUI.SetActive(true);
         }
 
+        public void GameOver(){
+            HUDUI.SetActive(false);
+            GameOverUI.SetActive(true);
+            GameOverUI.transform.GetChild(2).gameObject.GetComponent<Text>().text = PlayerManager.GetInstance().player.player_Score.ToString();
+        }
+
+        public void ResetGame(){
+            GameOverUI.SetActive(false);
+            HUDUI.SetActive(true);
+            Destroy(GameObject.Find("World"));
+            PlayerManager.GetInstance().InitPlayerInformation();
+            this.MakeRespawn();
+        }
+
         /// <summary> 
         /// 어플리케이션의 생명주기를 확인 및 업데이트하는 함수
         /// </summary>

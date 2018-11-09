@@ -46,7 +46,7 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 	// Player 정보 초기화
-	void InitPlayerInformation(){
+	public void InitPlayerInformation(){
 		player = new PlayerInfomation();
 		player.MAX_HP = 100;
 		player.player_HP = player.MAX_HP;

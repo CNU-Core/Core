@@ -121,6 +121,7 @@ public class NetworkManager : MonoBehaviour {
 		{
 			if(success){
 				Debug.Log("저장 성공");
+				this.ShowLeaderboardUI();
 			}
 			else {
 				Debug.Log("저장 실패");

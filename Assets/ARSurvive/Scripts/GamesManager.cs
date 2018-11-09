@@ -44,8 +44,13 @@ public class GamesManager : MonoBehaviour {
 	
 	public void GameOver(){
 		ObjManager.Call().MemoryDelete();
+		GameObject.Find("Controller").GetComponent<ARSurvive.ARController>().GameOver();
 	}
 
+	public void SaveScore(){
+		NetworkManager.GetInstance().ReportScore(PlayerManager.GetInstance().player.player_Score);
+	}
+	
 	// 총알정보 셋팅.
     void BulletInfoSetting(GameObject _Bullet)
     {
