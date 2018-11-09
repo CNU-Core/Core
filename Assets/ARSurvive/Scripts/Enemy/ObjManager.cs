@@ -125,7 +125,7 @@ public class ObjManager : MonoBehaviour {
         {
             GameObject obj = Manager[i];
             if (obj.name == "Bullet")
-                obj.GetComponent<Bullet>().BulletPower = player.BulletPower;
+                obj.GetComponent<Bullet>().BulletPower = PlayerManager.GetInstance().player.BulletPower;
         }
     }
  

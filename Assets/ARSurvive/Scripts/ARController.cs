@@ -70,6 +70,8 @@ namespace ARSurvive
 
         public GameObject ShopUI;
 
+        public GameObject GameOverUI;
+
         public GameObject door;
 
         /// <summary>
