@@ -99,7 +99,7 @@ namespace ARSurvive
 
         public void Start(){
             canvas = GameObject.Find("Canvas").transform;
-            ScanningForPlaneUI.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ MakeRespawn();});
+            ScanningForPlaneUI.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ MakeRespawn(); });
 
             if(!this.PlayingLoginView){
                 this.StartMenu();
@@ -143,13 +143,15 @@ namespace ARSurvive
         /// 스캔완료 버튼을 누를 시 가동되는 함수
         /// </summary>
         private void MakeRespawn(){
+            ScanningForPlaneUI.SetActive(false);
+            HUDUI.SetActive(true);
             Debug.Log("버튼눌림");
             GameObject doorPreb = GameObject.Instantiate(door, Vector3.forward, Quaternion.identity);
             Debug.Log("생성됨");
             GameObject.Find("Plane Generator").GetComponent<DetectedPlaneGenerator>().InitRespawn(doorPreb);
             Debug.Log("버튼종료");
-            ScanningForPlaneUI.SetActive(false);
-            HUDUI.SetActive(true);
+			ObjManager.Call().SetObject("Bullet");
+			ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
         }
 
         public void GameOver(){

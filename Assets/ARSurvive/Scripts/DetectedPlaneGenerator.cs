@@ -86,7 +86,7 @@ namespace ARSurvive
             Debug.Log("설마 위치가?: " + m_MeshVertices[0]);
 
             // 문의 위치 설정
-            doorPref.transform.position = m_MeshVertices[0];
+            doorPref.transform.position = m_MeshVertices[1];
 
             // 문의 방향 설정 (카메라가 있는 곳을 중심으로 회전됨)
             Vector3 vec = transform.position - doorPref.transform.position;

@@ -11,15 +11,12 @@ public class PlayerManager : MonoBehaviour {
 
 	// UI GameObject
 
-	private GameObject HUD;
-	private GameObject hp_Bar;
-	private GameObject score_View;
+	private Transform HUD;
+	private Transform hp_Bar;
+	private Transform score_View;
 
 	
 	void Awake(){
-		HUD = GameObject.Find("HUD");
-		score_View = HUD.transform.GetChild(1).gameObject;
-		hp_Bar = HUD.transform.GetChild(3).gameObject;
 	}
 
 	// Use this for initialization
@@ -30,9 +27,11 @@ public class PlayerManager : MonoBehaviour {
 		else {
 			GameObject.DontDestroyOnLoad(gameObject);
 			Instance = this;
-			ObjManager.Call().SetObject("Bullet");
+
+			HUD = GameObject.Find("Canvas").transform.GetChild(4);
+			score_View = HUD.gameObject.transform.GetChild(1);
+			hp_Bar = HUD.gameObject.transform.GetChild(3);
 			this.InitPlayerInformation();
-			ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
 		}
 
 	}
@@ -75,7 +74,7 @@ public class PlayerManager : MonoBehaviour {
 
 	// HP Bar 현재 Player의 HP에 따라 길이 달라짐
 	public void SetHPBar(){
-		hp_Bar.GetComponent<Image>().fillAmount = player.player_HP * 0.01f;
+		hp_Bar.gameObject.GetComponent<Image>().fillAmount = player.player_HP * 0.01f;
 	}
 	
 	public void AddPlayerScore(int score){
@@ -84,6 +83,6 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 	void SetScoreView(){
-		score_View.GetComponent<Text>().text = this.player.player_Score.ToString();
+		score_View.gameObject.GetComponent<Text>().text = this.player.player_Score.ToString();
 	}
 }
