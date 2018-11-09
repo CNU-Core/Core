@@ -51,7 +51,6 @@ public class ObjManager : MonoBehaviour {
  
     public void SetObject(string _Name, int _Count = 20)
     {
-        Debug.Log(_Name);
         GameObject obj = null;
         int Count = Origin.Length;
         for(int i = 0; i < Count; i++)

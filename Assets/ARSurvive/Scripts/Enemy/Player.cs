@@ -119,8 +119,12 @@ public class Player : MonoBehaviour {
     void BulletInfoSetting(GameObject _Bullet)
     {
         if (_Bullet == null) return;
- 
-        _Bullet.transform.position = transform.position;                // 총알의 위치 설정
+        Vector3 v = new Vector3(0,-2,0);
+        // Vector3 screenBottom = new Vector3();
+        // screenBottom = transform.position-v;
+        
+        Debug.Log(transform.position);
+        _Bullet.transform.position = transform.position+v;                // 총알의 위치 설정
         _Bullet.transform.rotation = transform.rotation;                // 총알의 회전 설정.
         _Bullet.SetActive(true);                                        // 총알을 활성화 시킨다.
         _Bullet.GetComponent<Bullet>().StartCoroutine("MoveBullet");    // 총알을 움직이게 한다.
