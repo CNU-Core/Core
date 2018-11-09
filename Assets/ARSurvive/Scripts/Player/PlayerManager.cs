@@ -81,9 +81,9 @@ public class PlayerManager : MonoBehaviour {
 		hp_Bar.GetComponent<Image>().fillAmount = player.player_HP * 0.01f;
 	}
 	
-	public void AddPlayerScore(int score){
-		this.player.player_Score += score;
-
+	public void AddPlayerScore(int _score){
+		this.player.player_Score += _score;
+		score.GetComponent<Text>().text = "" + player.player_Score;
 	}
 
 	    // 총알 키 체크.
