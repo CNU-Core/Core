@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
         ContinuouFire = true;
  
         // 플레이어 정보갱신.
-        ObjManager.Call().PlayerInfoUpdate(pInfo);
+        ObjManager.Call().PlayerInfoUpdate();
     }
  
     void Start()

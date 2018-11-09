@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
  
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        player = GameObject.FindGameObjectWithTag("First Person Camera").transform;
         playerManager = GameObject.Find("PlayerManager");
     }
  
