@@ -2542,6 +2542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c0b51531d3e47d4af4815e776e7f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Current_point: {fileID: 1348352576}
   point: 1000
 --- !u!4 &787509406
 Transform:
@@ -2551,10 +2552,10 @@ Transform:
   m_GameObject: {fileID: 787509404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 368.2838, y: 154.75095, z: -223.03294}
-  m_LocalScale: {x: 0.3046266, y: 0.3046266, z: 0.3046266}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789052928
 GameObject:
@@ -3769,7 +3770,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1244553102
 GameObject:
@@ -4821,7 +4822,7 @@ RectTransform:
   - {fileID: 932607012}
   - {fileID: 863087691}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5678,7 +5679,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ce3aebc1c5ad842bf07188408bfa6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: 0
   gun_price: 0
   potion_price: 0
   gun_name: 
@@ -5938,6 +5938,7 @@ MonoBehaviour:
   GunButton: {fileID: 1633861605}
   PotionButton: {fileID: 313290036}
   Select_menu: {fileID: 751179143}
+  current_poiont: {fileID: 1348352576}
 --- !u!114 &1923905906
 MonoBehaviour:
   m_ObjectHideFlags: 0
