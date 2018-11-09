@@ -2527,6 +2527,8 @@ MonoBehaviour:
     type: 2}
   SearchingForPlaneUI: {fileID: 1133631540}
   ScanningForPlaneUI: {fileID: 932607011}
+  HUDUI: {fileID: 483566542}
+  ShopUI: {fileID: 863087690}
   door: {fileID: 1894295154843482, guid: 2d7398a982c8a4b4cbf5522903714369, type: 2}
 --- !u!1 &633160214
 GameObject:
