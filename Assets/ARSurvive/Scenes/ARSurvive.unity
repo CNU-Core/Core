@@ -936,6 +936,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0.0012831, y: 0.024981}
   m_SizeDelta: {x: 1066.3, y: 599.95}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &333892935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1296224812237862, guid: efe056a4f5b3840e88d53de3be55b95c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1068999125}
 --- !u!1 &334845386
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,11 +3153,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 789052928}
   m_CullTransparentMesh: 0
---- !u!1 &806230020 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1715156330508422, guid: efe056a4f5b3840e88d53de3be55b95c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1068999125}
 --- !u!20 &836205483 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 20732482437951632, guid: efe056a4f5b3840e88d53de3be55b95c,
@@ -7863,7 +7863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 0
   AttackGap: 0
-  camera_Obj: {fileID: 806230020}
+  camera_Obj: {fileID: 333892935}
 --- !u!4 &2106333206
 Transform:
   m_ObjectHideFlags: 0
