@@ -11,9 +11,9 @@ public class PlayerManager : MonoBehaviour {
 
 	// UI GameObject
 
-	private GameObject HUD;
-	private GameObject hp_Bar;
-	private GameObject score;
+	private Transform HUD;//
+	private Transform hp_Bar;// 체력 게이지
+	private Transform score;// 점수
 
 	public GameObject camera;
 
@@ -35,9 +35,9 @@ public class PlayerManager : MonoBehaviour {
 			Instance = this;
 			// ObjManager.Call().SetObject("Bullet");
 			
-			HUD = GameObject.Find("HUD");
-			score = HUD.transform.GetChild(1).gameObject;
-			hp_Bar = HUD.transform.GetChild(3).gameObject;
+			HUD = GameObject.Find("Canvas").transform.GetChild(4);
+			score = HUD.GetChild(1);
+			hp_Bar = HUD.GetChild(3);
 
 			this.InitPlayerInformation();
 			// ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의

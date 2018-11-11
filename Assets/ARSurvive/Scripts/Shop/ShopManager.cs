@@ -51,7 +51,9 @@ public class ShopManager : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 	}
 	void Start(){
-		current_point.GetComponent<Text>().text = PlayerManager.GetInstance().player.player_Point.ToString();
+		playerManager = PlayerManager.GetInstance();
+		current_point.GetComponent<Text>().text
+		 = playerManager.player.player_Point.ToString();
 	}
 	public void setting(){
 		if(Gun_menu.activeSelf){

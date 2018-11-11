@@ -18,7 +18,7 @@ public class Buy_click : MonoBehaviour {
 	public void buyClick(){
 		
 		if(GunMenu.activeSelf){
-			Debug.Log(playerManager.player.player_Point);
+			//Debug.Log(playerManager.player.player_Point);
 			if(playerManager.player.player_Point
 			- ShopManager.Instance.gun_price >= 0){
 				ShopManager.instance.gunBuy_check=1;
