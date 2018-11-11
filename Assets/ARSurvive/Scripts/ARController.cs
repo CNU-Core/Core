@@ -177,7 +177,7 @@ namespace ARSurvive
             HUDUI.SetActive(true);
             showHUD = false;
             showOver = false;
-            Destroy(GameObject.Find("World"));
+            GameObject.Destroy(GameObject.Find("World"));
             PlayerManager.GetInstance().InitPlayerInformation();
             this.MakeRespawn();
         }
