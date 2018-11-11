@@ -81,7 +81,7 @@ public class ObjManager : MonoBehaviour {
             GameObject Obj = Manager[i];
  
             // 활성화가 되어있다면.
-            if (Obj.active == true)
+            if (Obj.activeSelf == true)
             {
                 // 리스트의 마지막까지 돌았지만 모든 객체가 사용중이라면.
                 if (i == Count - 1)
@@ -125,7 +125,7 @@ public class ObjManager : MonoBehaviour {
         {
             GameObject obj = Manager[i];
             if (obj.name == "Bullet")
-                obj.GetComponent<Bullet>().BulletPower = player.BulletPower;
+                obj.GetComponent<Bullet>().BulletPower = PlayerManager.GetInstance().player.BulletPower;
         }
     }
  

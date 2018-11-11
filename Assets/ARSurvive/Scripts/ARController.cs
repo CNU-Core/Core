@@ -66,6 +66,12 @@ namespace ARSurvive
         /// </summary>
         public GameObject ScanningForPlaneUI;
 
+        public GameObject HUDUI;
+
+        public GameObject ShopUI;
+
+        public GameObject GameOverUI;
+
         public GameObject door;
 
         /// <summary>
@@ -93,8 +99,7 @@ namespace ARSurvive
 
         public void Start(){
             canvas = GameObject.Find("Canvas").transform;
-            // canvas.GetChild(0).GetChild(0).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ StartMenu(); } );
-            ScanningForPlaneUI.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ MakeRespawn();});
+            ScanningForPlaneUI.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ MakeRespawn(); });
 
             if(!this.PlayingLoginView){
                 this.StartMenu();
@@ -132,60 +137,35 @@ namespace ARSurvive
             {
                 return;
             }
-
-            // // Raycast against the location the player touched to search for planes.
-            // TrackableHit hit;
-            // TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
-            //     TrackableHitFlags.FeaturePointWithSurfaceNormal;
-
-            // if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
-            // {
-            //     // Use hit pose and camera pose to check if hittest is from the
-            //     // back of the plane, if it is, no need to create the anchor.
-            //     if ((hit.Trackable is DetectedPlane) &&
-            //         Vector3.Dot(FirstPersonCamera.transform.position - hit.Pose.position,
-            //             hit.Pose.rotation * Vector3.up) < 0)
-            //     {
-            //         Debug.Log("Hit at back of the current DetectedPlane");
-            //     }
-            //     else
-            //     {
-            //         // Instantiate Andy model at the hit pose.
-            //         var andyObject = Instantiate(AndyAndroidPrefab, hit.Pose.position, hit.Pose.rotation);
-
-            //         // Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
-            //         andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
-
-            //         // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
-            //         // world evolves.
-            //         var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-
-            //         // Make Andy model a child of the anchor.
-            //         andyObject.transform.parent = anchor.transform;
-            //     }
-            // }
         }
-
-        // /// <summary>
-        // /// 스캔완료 버튼을 누를 시 모서리를 알려주는 함수
-        // /// </summary>
-        // private void CheckEdge(){
-        //     DetectedPlanePrefab.GetComponent<DetectedPlaneVisualizer>()._FindEdge(AndyAndroidPrefab);
-        //     Debug.Log("Main LeftTop: " + leftTop);
-        //     Debug.Log("Main RightTop: " + rightTop);
-        //     Debug.Log("Main leftBottom: " + leftBottom);
-        //     Debug.Log("Main rightBottom: " + rightBottom);
-        // }
 
         /// <summary>
         /// 스캔완료 버튼을 누를 시 가동되는 함수
         /// </summary>
         private void MakeRespawn(){
+            ScanningForPlaneUI.SetActive(false);
+            HUDUI.SetActive(true);
             Debug.Log("버튼눌림");
             GameObject doorPreb = GameObject.Instantiate(door, Vector3.forward, Quaternion.identity);
             Debug.Log("생성됨");
             GameObject.Find("Plane Generator").GetComponent<DetectedPlaneGenerator>().InitRespawn(doorPreb);
             Debug.Log("버튼종료");
+			ObjManager.Call().SetObject("Bullet");
+			ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
+        }
+
+        public void GameOver(){
+            HUDUI.SetActive(false);
+            GameOverUI.SetActive(true);
+            GameOverUI.transform.GetChild(2).gameObject.GetComponent<Text>().text = PlayerManager.GetInstance().player.player_Score.ToString();
+        }
+
+        public void ResetGame(){
+            GameOverUI.SetActive(false);
+            HUDUI.SetActive(true);
+            Destroy(GameObject.Find("World"));
+            PlayerManager.GetInstance().InitPlayerInformation();
+            this.MakeRespawn();
         }
 
         /// <summary> 

@@ -26,8 +26,6 @@ public class Enemy : MonoBehaviour
     private bool walk;
     private bool attack;
  
-    private GameObject playerManager;
-
     // 정보 초기화 함수.
     public void Init()
     {
@@ -50,8 +48,7 @@ public class Enemy : MonoBehaviour
  
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("First Person Camera").transform;
-        playerManager = GameObject.Find("PlayerManager");
+        player = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
  
     // 플레이어와의 거리를 체크.
@@ -127,7 +124,7 @@ public class Enemy : MonoBehaviour
             HP   = 0;       // 체력의 수치가 음의 값으로 갔을 경우를 대비한 초기화.
             Life = false;   // 죽었음을 알림.
             
-            playerManager.GetComponent<PlayerManager>().AddPlayerScore(100);
+            PlayerManager.GetInstance().AddPlayerScore(100);
             // 내 죽음을 부모에리어에게 알려라!
             // 부모 에리어가 가진 스크립트를 가져와 DeadEnemy()함수를 호출.
             transform.parent.GetComponent<CreateEnemy>().DeadEnemy();
@@ -265,7 +262,11 @@ public class Enemy : MonoBehaviour
  
             Rotations(player.position);
             DisCheckToState(player.position, 3f, STATE.IDLE, false);
- 
+
+            while(Life){
+                PlayerManager.GetInstance().PlayerAttacked(20);
+                yield return new WaitForSeconds(2f);
+            }
             yield return null;
         }
  

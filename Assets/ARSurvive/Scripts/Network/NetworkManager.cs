@@ -70,6 +70,10 @@ public class NetworkManager : MonoBehaviour {
                 }
 				// 로그인 실패
                 else {
+#if UNITY_EDITOR
+					GameObject controller = GameObject.Find("Controller");
+					controller.GetComponent<ARSurvive.ARController>().StartMenu();
+#endif
 					Debug.Log("On Click 구글 로그인에 실패하였습니다.");
                 }
             });
@@ -121,6 +125,7 @@ public class NetworkManager : MonoBehaviour {
 		{
 			if(success){
 				Debug.Log("저장 성공");
+				this.ShowLeaderboardUI();
 			}
 			else {
 				Debug.Log("저장 실패");
