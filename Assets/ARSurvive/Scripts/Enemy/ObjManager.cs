@@ -23,10 +23,13 @@ public class ObjManager : MonoBehaviour {
  
     // 비공개.
     private Player.PINFO pInfo;         // 플레이어 정보.
+
+    private PlayerInfomation player;
  
     // 오브젝트를 받아 생성.
     public void SetObject( GameObject _Obj, int _Count, string _Name)
     {
+        Debug.Log(_Name + "현재 count는" + _Count);
         for (int i = 0; i < _Count; i++)
         {
             GameObject obj = Instantiate(_Obj) as GameObject;
@@ -37,6 +40,9 @@ public class ObjManager : MonoBehaviour {
             
             if(_Name == "Bullet"){ // 총알이 아니면 색을 랜덤으로 설정.
                 obj.transform.GetComponent<SphereCollider>().isTrigger = true;
+            }
+            else if (_Name == "Enemy"){
+                Debug.Log("좀비생성");    
             }
             else
                 obj.GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value, 1.0f);
@@ -108,10 +114,10 @@ public class ObjManager : MonoBehaviour {
     }
  
     // 플레이어의 정보갱신.
-    public void PlayerInfoUpdate(Player.PINFO _Info)
+    public void PlayerInfoUpdate()
     {
         // 플레이어 정보 업데이트.
-        pInfo = _Info;
+        // pInfo = _Info;
  
         int Count = Manager.Count;
  
@@ -119,7 +125,7 @@ public class ObjManager : MonoBehaviour {
         {
             GameObject obj = Manager[i];
             if (obj.name == "Bullet")
-                obj.GetComponent<Bullet>().BulletPower = _Info.BulletPower;
+                obj.GetComponent<Bullet>().BulletPower = player.BulletPower;
         }
     }
  
@@ -128,7 +134,6 @@ public class ObjManager : MonoBehaviour {
     {
         switch (_Type)
         {
-            case "Life":        return pInfo.Life;
             case "MAXHP":       return pInfo.MAX_HP;
             case "HP":          return pInfo.HP;
             case "Speed":       return pInfo.MoveSpeed;

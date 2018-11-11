@@ -61,7 +61,6 @@ public class CreateEnemy : MonoBehaviour {
     {
         for (int i = 0; i < MaxCount; i++)
         {
-            Debug.Log(ObjManager.Call().GetObject("Enemy"));
             GameObject obj = ObjManager.Call().GetObject("Enemy");      // Enemy객체 요청.
             obj.transform.position = RandomPos();                       // 위치 랜덤 설정.
             obj.transform.parent = transform;                           // 부모 설정.

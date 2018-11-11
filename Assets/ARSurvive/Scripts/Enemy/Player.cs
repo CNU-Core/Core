@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
         ContinuouFire = true;
  
         // 플레이어 정보갱신.
-        ObjManager.Call().PlayerInfoUpdate(pInfo);
+        ObjManager.Call().PlayerInfoUpdate();
     }
  
     void Start()
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour {
     // 총알 키 체크.
     void KeyCheck()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump")) //스페이스바로 총알 발사
             StartCoroutine("NextFire");
         else if (Input.GetButtonUp("Jump")) 
             ContinuouFire = false;
@@ -119,8 +119,12 @@ public class Player : MonoBehaviour {
     void BulletInfoSetting(GameObject _Bullet)
     {
         if (_Bullet == null) return;
- 
-        _Bullet.transform.position = transform.position;                // 총알의 위치 설정
+        Vector3 v = new Vector3(0,-2,0);
+        // Vector3 screenBottom = new Vector3();
+        // screenBottom = transform.position-v;
+        
+        Debug.Log(transform.position);
+        _Bullet.transform.position = transform.position+v;                // 총알의 위치 설정
         _Bullet.transform.rotation = transform.rotation;                // 총알의 회전 설정.
         _Bullet.SetActive(true);                                        // 총알을 활성화 시킨다.
         _Bullet.GetComponent<Bullet>().StartCoroutine("MoveBullet");    // 총알을 움직이게 한다.

@@ -15,7 +15,7 @@ public class EnemyArea : MonoBehaviour {
         CreateArea(AreaCount);
  
         // 에너미 생산 요청.
-        ObjManager.Call().SetObject("Enemy", AreaCount);
+        ObjManager.Call().SetObject("Enemy");
     }
  
     // 위치 랜덤 설정.
@@ -27,7 +27,7 @@ public class EnemyArea : MonoBehaviour {
         // 그렇지 않으면 AreaGap이하의 값만 나오게 되므로 무한 루프를 돌게 된다.
         float dis = AreaGap + 2;
         
-        Vector3 Pos = new Vector3(this.transform.position.x + Random.Range(-dis,dis),0,this.transform.position.z + Random.Range(-dis,dis));
+        Vector3 Pos = new Vector3(this.transform.position.x + Random.Range(-dis,dis),(float)-0.88,this.transform.position.z + Random.Range(-dis,dis));
         return Pos;
     }
 

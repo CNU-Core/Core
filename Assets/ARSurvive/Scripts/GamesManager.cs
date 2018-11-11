@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class GamesManager : MonoBehaviour {
-
-	// Use this for initialization
-	public static GamesManager instance = null;
+	private static GamesManager Instance;
 
 	public Text Current_point;
 	public int point = 1000;
-	public static GamesManager Instance{
-		get{
-			return instance;
+	// Use this for initialization
+	void Start () {
+		if(Instance != null){
+			GameObject.Destroy(gameObject);
 		}
+		else {
+			GameObject.DontDestroyOnLoad(gameObject);
+			Instance = this;
+		}	
 	}
 	void Awake(){
-		if(instance!=null){
-			DestroyImmediate(gameObject);
-			return;
-		}
-		instance = this;
-		DontDestroyOnLoad(gameObject);
 	}	
 
 	void Update(){
