@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GamesManager : MonoBehaviour {
 	private static GamesManager Instance;
-
+	private PlayerInfomation player;
 	public Text Current_point;
-	public int point = 1000;
+	
 	// Use this for initialization
 	void Start () {
 		if(Instance != null){
@@ -21,6 +21,6 @@ public class GamesManager : MonoBehaviour {
 	}	
 
 	void Update(){
-		Current_point.GetComponent<Text>().text = point.ToString();
+		//Current_point.GetComponent<Text>().text = player.player_Point.ToString();
 	}
 }

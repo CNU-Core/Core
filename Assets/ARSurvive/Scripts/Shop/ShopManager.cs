@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour {
 
 	public static ShopManager instance = null;
-	//public int point = GamesManager.Instance.point;
+	private PlayerManager playerManager;
+
 	//GUN 
 	public int gun_price=0;
 	public int potion_price=0;
@@ -30,7 +31,7 @@ public class ShopManager : MonoBehaviour {
 	public Image select_image;
 	public GameObject preview_Camvas;
 	public Text kor;
-	public Text current_poiont;
+	public Text current_point;
 	public GameObject Gun_menu;
 	public GameObject Potoin_menu;
 
@@ -49,7 +50,9 @@ public class ShopManager : MonoBehaviour {
 		instance = this;
 		DontDestroyOnLoad(gameObject);
 	}
-	
+	void Start(){
+		current_point.GetComponent<Text>().text = PlayerManager.GetInstance().player.player_Point.ToString();
+	}
 	public void setting(){
 		if(Gun_menu.activeSelf){
 			if(!preview_Camvas.activeSelf){//화면이 꺼져있는 경우

@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour {
 	// PlayerManager Instance
 	private static PlayerManager Instance;
 	// Player 객체 클래스
-	private PlayerInfomation player;
+	public PlayerInfomation player;
 
 	// UI GameObject
 
@@ -23,9 +23,6 @@ public class PlayerManager : MonoBehaviour {
     private bool ContinuouFire; // 게속 발사할 것인가? 에 대한 플래그.
 	
 	void Awake(){
-		HUD = GameObject.Find("HUD");
-		score = HUD.transform.GetChild(1).gameObject;
-		hp_Bar = HUD.transform.GetChild(3).gameObject;
 	}
 
 	// Use this for initialization
@@ -36,13 +33,22 @@ public class PlayerManager : MonoBehaviour {
 		else {
 			GameObject.DontDestroyOnLoad(gameObject);
 			Instance = this;
-			ObjManager.Call().SetObject("Bullet");
+			// ObjManager.Call().SetObject("Bullet");
+			
+			HUD = GameObject.Find("HUD");
+			score = HUD.transform.GetChild(1).gameObject;
+			hp_Bar = HUD.transform.GetChild(3).gameObject;
+
 			this.InitPlayerInformation();
-			ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
+			// ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
 		}
 
 	}
 	
+	public static PlayerManager GetInstance(){
+		return Instance;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		KeyCheck();
