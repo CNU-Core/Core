@@ -29,8 +29,8 @@ public class PlayerManager : MonoBehaviour {
 			Instance = this;
 
 			HUD = GameObject.Find("Canvas").transform.GetChild(4);
-			score_View = HUD.gameObject.transform.GetChild(1);
-			hp_Bar = HUD.gameObject.transform.GetChild(3);
+			score_View = HUD.GetChild(1);
+			hp_Bar = HUD.GetChild(3);
 			this.InitPlayerInformation();
 		}
 

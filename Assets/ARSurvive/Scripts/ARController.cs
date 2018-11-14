@@ -38,6 +38,8 @@ namespace ARSurvive
         [Header("=========== 테스트용 로그인 화면 끄기 ============")]
         [SerializeField]
         private bool PlayingLoginView = true;
+        bool showHUD = false;
+        bool showOver = false;
 
 
         [Header("=========== ARCore Controller 설정 ============")]
@@ -119,6 +121,7 @@ namespace ARSurvive
             // 트레킹 중에는 Snakbar가 사라지게끔 함
             Session.GetTrackables<DetectedPlane>(m_AllPlanes);
             bool showSearchingUI = true;
+
             for (int i = 0; i < m_AllPlanes.Count; i++)
             {
                 if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
@@ -128,8 +131,19 @@ namespace ARSurvive
                 }
             }
 
-            SearchingForPlaneUI.SetActive(showSearchingUI);
-            ScanningForPlaneUI.SetActive(!showSearchingUI);
+            if(!showHUD){
+                SearchingForPlaneUI.SetActive(showSearchingUI);
+                ScanningForPlaneUI.SetActive(!showSearchingUI);
+            } else {
+                if(!showOver){
+                    ScanningForPlaneUI.SetActive(!showHUD);
+                    HUDUI.SetActive(showHUD);
+                }
+                else {
+                    HUDUI.SetActive(!showOver);
+                    GameOverUI.SetActive(showOver);
+                }
+            }
 
             // 화면에 터치가 되지 않을 경우, Update함수를 여기까지만 사용할 수 있게 설정
             Touch touch;
@@ -143,8 +157,7 @@ namespace ARSurvive
         /// 스캔완료 버튼을 누를 시 가동되는 함수
         /// </summary>
         private void MakeRespawn(){
-            ScanningForPlaneUI.SetActive(false);
-            HUDUI.SetActive(true);
+            showHUD = true;
             Debug.Log("버튼눌림");
             GameObject doorPreb = GameObject.Instantiate(door, Vector3.forward, Quaternion.identity);
             Debug.Log("생성됨");
@@ -155,15 +168,16 @@ namespace ARSurvive
         }
 
         public void GameOver(){
-            HUDUI.SetActive(false);
-            GameOverUI.SetActive(true);
+            showOver = true;
             GameOverUI.transform.GetChild(2).gameObject.GetComponent<Text>().text = PlayerManager.GetInstance().player.player_Score.ToString();
         }
 
         public void ResetGame(){
             GameOverUI.SetActive(false);
             HUDUI.SetActive(true);
-            Destroy(GameObject.Find("World"));
+            showHUD = false;
+            showOver = false;
+            GameObject.Destroy(GameObject.Find("World"));
             PlayerManager.GetInstance().InitPlayerInformation();
             this.MakeRespawn();
         }
