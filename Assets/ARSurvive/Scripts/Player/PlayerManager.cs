@@ -77,15 +77,9 @@ public class PlayerManager : MonoBehaviour {
 		hp_Bar.gameObject.GetComponent<Image>().fillAmount = player.player_HP * 0.01f;
 	}
 	
-<<<<<<< HEAD
-	public void AddPlayerScore(int _score){
-		this.player.player_Score += _score;
-		score.GetComponent<Text>().text = "" + player.player_Score;
-=======
 	public void AddPlayerScore(int score){
 		this.player.player_Score += score;
 		this.SetScoreView();
->>>>>>> origin
 	}
 
 	void SetScoreView(){

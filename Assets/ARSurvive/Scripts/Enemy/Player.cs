@@ -119,7 +119,7 @@ public class Player : MonoBehaviour {
     void BulletInfoSetting(GameObject _Bullet)
     {
         if (_Bullet == null) return;
-        Vector3 v = new Vector3(0,-2,0);
+        Vector3 v = new Vector3(0,-1,0);
         // Vector3 screenBottom = new Vector3();
         // screenBottom = transform.position-v;
         
