@@ -9,6 +9,8 @@ public class CreateEnemy : MonoBehaviour {
     public int EnemyCount;        // 현재 소환된 머리 수.
     
     public bool Summon;           // 소환 여부.
+
+    public int CheckCount;        //최대 소환 가능한 수까지 소환됬을 경우
     public GameObject EnemyPref;
     // 값 초기화.
     void Init(float _SummonTimeGap, int _MaxCount, bool _Summon)
@@ -40,17 +42,21 @@ public class CreateEnemy : MonoBehaviour {
         while (true)
         {
             // 적 머리수가 0이면 소환여부를 false(소환가능)로 전환.
-            if (EnemyCount <= 0)
-            {
-                // Enemy가 다 죽고 리스폰까지 시간지연.
-                yield return new WaitForSeconds(SummonTimeGap);
-                Summon = false;
-            }
+            // if (EnemyCount <= 0)
+            // {
+            //     // Enemy가 다 죽고 리스폰까지 시간지연.
+            //     yield return new WaitForSeconds(SummonTimeGap);
+            //     Summon = false;
+            // }
  
             // 소환된 적이 없으면 적 소환.
-            if (!Summon)
+            if (!Summon){
                 ESummon();
- 
+                CheckCount++;
+            }
+            if (CheckCount == MaxCount){
+                Summon = false;
+            }
             // 1초마다 체크.
             yield return new WaitForSeconds(1f);
         }
