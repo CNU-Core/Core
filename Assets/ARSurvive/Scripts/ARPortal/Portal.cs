@@ -16,6 +16,7 @@ public class Portal : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		device = GameObject.FindGameObjectWithTag("MainCamera").transform;
 		SetMaterials(false);
 	}
 	
