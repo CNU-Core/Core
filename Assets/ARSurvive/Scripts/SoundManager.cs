@@ -17,7 +17,7 @@ public class SoundManager : MonoBehaviour
             return _Instance;
         }
     }
- 
+
     void Awake()
     {
         _Instance = this;

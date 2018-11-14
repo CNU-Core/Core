@@ -47,6 +47,9 @@ public class ShopManager : MonoBehaviour {
 		instance = this;
 		DontDestroyOnLoad(gameObject);
 	}
+	void Start(){
+		SoundManager.I.ChangeBGM("waveStart");
+	}
 public void setting(){
 		if(Gun_menu.activeSelf){
 			if(!preview_Camvas.activeSelf){//화면이 꺼져있는 경우
@@ -88,7 +91,7 @@ public void setting(){
 				preview_Camvas.SetActive(false);
 			}
 		}
-
+		SoundManager.I.PlaySFX("shop_click");
 	}
 
 	public void active_menu(GameObject button){
