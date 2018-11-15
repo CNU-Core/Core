@@ -58,8 +58,8 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 	// Player의 HP 차감
-	public void PlayerAttacked(int damage){
-		player.player_HP -= damage;
+	public void PlayerAttacked(){
+		player.player_HP -= player.BulletPower;
 		this.SetHPBar();
 		if(player.player_HP <= 0){
 			GamesManager.GetInstance().GameOver();
@@ -79,7 +79,16 @@ public class PlayerManager : MonoBehaviour {
 	
 	public void AddPlayerScore(int score){
 		this.player.player_Score += score;
+		this.AddPlayerPoint(score / 10);
 		this.SetScoreView();
+	}
+
+	private void AddPlayerPoint(int point){
+		this.player.player_Point += point;
+	}
+
+	public void SubPlayerPoint(int point){
+		this.player.player_Point -= point;
 	}
 
 	void SetScoreView(){

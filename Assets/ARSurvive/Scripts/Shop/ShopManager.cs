@@ -33,6 +33,7 @@ public class ShopManager : MonoBehaviour {
 	public GameObject Potoin_menu;
 
 	public GameObject block;
+	public Text point;
 	// Use this for initialization
 	public static ShopManager Instance{
 		get{
@@ -46,6 +47,14 @@ public class ShopManager : MonoBehaviour {
 		}
 		instance = this;
 		DontDestroyOnLoad(gameObject);
+	}
+
+	void Start(){
+		this.UpdatePoint();
+	}
+
+	public void UpdatePoint(){
+		point.text = PlayerManager.GetInstance().player.player_Point.ToString();
 	}
 public void setting(){
 		if(Gun_menu.activeSelf){
