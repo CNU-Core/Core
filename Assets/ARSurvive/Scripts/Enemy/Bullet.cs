@@ -24,6 +24,12 @@ public class Bullet : MonoBehaviour {
         gameObject.SetActive(false);
     }
     
+    void OnCollisionEnter(Collision col){
+        if(col.transform.CompareTag("Wall")){
+            Destroy(col.transform.GetComponent<SphereCollider>());
+        }
+    }
+    
     // 충돌체크
     void OnTriggerEnter(Collider _Col)
     {
