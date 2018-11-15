@@ -35,8 +35,6 @@ public class GamesManager : MonoBehaviour {
 			HUD = GameObject.Find("Canvas").transform.GetChild(4);
 			currentBulletNumber = HUD.gameObject.transform.GetChild(5);
 
-			ObjManager.Call().SetObject("Bullet");
-
 			currentBulletNumber.gameObject.GetComponent<Text>().text = realTimeBulletNumber.ToString();
 			this.InitBullet();
 		}   

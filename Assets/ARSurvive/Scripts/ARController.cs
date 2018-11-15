@@ -180,6 +180,7 @@ namespace ARSurvive
             Debug.Log("생성됨");
             GameObject.Find("Plane Generator").GetComponent<DetectedPlaneGenerator>().InitRespawn(doorPreb);
             Debug.Log("버튼종료");
+			ObjManager.Call().SetObject("Bullet");
             ScanningForPlaneUI.SetActive(false);
             HUDUI.SetActive(true);
         }
