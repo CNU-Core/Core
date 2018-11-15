@@ -24,5 +24,6 @@ public class Buy_click : MonoBehaviour {
 			PotionButton.GetComponent<Button>().enabled = false;
 		}
 		ShopManager.instance.allBuy_check();
+		SoundManager.I.PlaySFX("charge");
 	}
 }

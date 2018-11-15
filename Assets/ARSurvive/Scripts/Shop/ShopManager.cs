@@ -48,7 +48,7 @@ public class ShopManager : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 	}
 	void Start(){
-		SoundManager.I.ChangeBGM("waveStart");
+		SoundManager.I.ChangeBGM("Shop_BGM");
 	}
 public void setting(){
 		if(Gun_menu.activeSelf){
@@ -91,7 +91,7 @@ public void setting(){
 				preview_Camvas.SetActive(false);
 			}
 		}
-		SoundManager.I.PlaySFX("shop_click");
+		SoundManager.I.PlaySFX("click");
 	}
 
 	public void active_menu(GameObject button){
@@ -104,6 +104,7 @@ public void setting(){
 			Potoin_menu.SetActive(true);
 			preview_Camvas.SetActive(false);
 		}
+		SoundManager.I.PlaySFX("click");
 	}
 
 	public void allBuy_check(){
