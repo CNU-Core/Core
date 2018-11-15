@@ -34,7 +34,7 @@ public class GamesManager : MonoBehaviour {
 	}
 
 	void InitBullet(){
-		AttackGap = 0.2f;
+		AttackGap = 30.0f;
 		ContinuouFire = true;
 	}
 
