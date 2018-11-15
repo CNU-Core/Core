@@ -9,6 +9,9 @@ public class CreateEnemy : MonoBehaviour {
     public int EnemyCount;        // 현재 소환된 머리 수.
     
     public bool Summon;           // 소환 여부.
+    public string zombieName;
+
+    public int CheckCount;        //최대 소환 가능한 수까지 소환됬을 경우
     public GameObject EnemyPref;
     // 값 초기화.
     void Init(float _SummonTimeGap, int _MaxCount, bool _Summon)
@@ -22,9 +25,12 @@ public class CreateEnemy : MonoBehaviour {
  
     void Start () 
     {
+        Debug.Log(zombieName + "ㅁㅁㅁ123123123123");
         Init(Random.Range(5f,10f),1,false);
     }
-    
+    public void Name(string _name){
+        zombieName = _name;
+    }
     // 랜덤 위치.
     Vector3 RandomPos()
     {
@@ -48,9 +54,13 @@ public class CreateEnemy : MonoBehaviour {
             // }
  
             // 소환된 적이 없으면 적 소환.
-            if (!Summon)
+            if (!Summon){
                 ESummon();
- 
+                // CheckCount++;
+            }
+            // if (CheckCount == MaxCount){
+            //     Summon = false;
+            // }
             // 1초마다 체크.
             yield return new WaitForSeconds(1f);
         }
@@ -59,15 +69,31 @@ public class CreateEnemy : MonoBehaviour {
     // 소환!
     void ESummon()
     {
-        for (int i = 0; i < MaxCount; i++)
-        {
+        if(zombieName == "Enemy"){
+            for (int i = 0; i < MaxCount; i++)
+            {
             GameObject obj = ObjManager.Call().GetObject("Enemy");      // Enemy객체 요청.
             obj.transform.position = RandomPos();                       // 위치 랜덤 설정.
             obj.transform.parent = transform;                           // 부모 설정.
             obj.SetActive(true);                                        // 적 활성화.
             obj.GetComponent<Enemy>().Init();                           // 적 정보 초기화.
             EnemyCount++;
+            }
         }
+        if(zombieName == "Enemy2"){
+            for (int i = 0; i < MaxCount; i++)
+            {
+            GameObject obj2 = ObjManager.Call().GetObject("Enemy2");      // Enemy객체 요청.
+            obj2.transform.position = RandomPos();                       // 위치 랜덤 설정.
+            obj2.transform.parent = transform;                           // 부모 설정.
+            obj2.SetActive(true);                                        // 적 활성화.
+            obj2.GetComponent<Enemy>().Init();                           // 적 정보 초기화.
+            EnemyCount++;
+            }
+        }
+
+        
+    
         Summon = true;
     }
  

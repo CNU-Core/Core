@@ -16,6 +16,7 @@ public class EnemyArea : MonoBehaviour {
  
         // 에너미 생산 요청.
         ObjManager.Call().SetObject("Enemy");
+        ObjManager.Call().SetObject("Enemy2");
     }
  
     // 위치 랜덤 설정.
@@ -84,7 +85,13 @@ public class EnemyArea : MonoBehaviour {
         {
             Transform Area = RespawnArea[i];
             Area.parent = obj.transform;                    // 부모 객체지정.
-            Area.gameObject.AddComponent<CreateEnemy>();    // Area객체에 CreateEnemy 스크립트를 추가.
+            if(i==RespawnArea.Count-1){
+                Area.gameObject.AddComponent<CreateEnemy>().Name("Enemy2");
+            }
+            else{
+                Area.gameObject.AddComponent<CreateEnemy>().Name("Enemy");
+            }
+            //Area.gameObject.AddComponent<CreateEnemy>();    // Area객체에 CreateEnemy 스크립트를 추가.
         }
     }
  
