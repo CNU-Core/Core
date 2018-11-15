@@ -749,15 +749,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSourceCount: 3
   BGMs:
+  - {fileID: 8300000, guid: ae6fda17060f8a74ab437a716aacf793, type: 3}
+  - {fileID: 8300000, guid: 2c67340b2b4e5c24ea05ebcf12d1ddc7, type: 3}
+  - {fileID: 8300000, guid: b340873f8d7ea1e4ab1c3cc4f7509049, type: 3}
+  - {fileID: 8300000, guid: 4b04490779cbd084ca02101112413c60, type: 3}
   - {fileID: 8300000, guid: dfd21b3a199c67b46a7dbee3f12fdf34, type: 3}
   SFXs:
+  - {fileID: 8300000, guid: 6d55e4350574e4d45a6c0788fef4e84f, type: 3}
+  - {fileID: 8300000, guid: c35262511605f934a8b26f48980c7470, type: 3}
+  - {fileID: 8300000, guid: 5fa59ee625473da4ab661fe08e5ef995, type: 3}
+  - {fileID: 8300000, guid: b22659aa47282bf4f9089b5df020c883, type: 3}
+  - {fileID: 8300000, guid: 9f2629b5188f62b47a4fc358f2d95d85, type: 3}
+  - {fileID: 8300000, guid: 7d99cbab2fdc5444a8ad1add1de4993d, type: 3}
+  - {fileID: 8300000, guid: a0ed283142873704998df7abd9accd73, type: 3}
   - {fileID: 8300000, guid: 9d7d68d1d5c2b58418e5b1e0183ab37b, type: 3}
   - {fileID: 8300000, guid: b40878d666763a949aae17c04bbdf3b1, type: 3}
   - {fileID: 8300000, guid: f11ba1db7a83ddc44968daed83bab34c, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ChangingSpeed: 0
 --- !u!4 &285401785
 Transform:
@@ -5233,7 +5240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00012207031}
+  m_AnchoredPosition: {x: 0, y: -0.000091552734}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1471464058
