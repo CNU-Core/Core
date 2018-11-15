@@ -86,15 +86,18 @@ namespace ARSurvive
             Debug.Log("설마 위치가?: " + m_MeshVertices[0]);
 
             // 문의 위치 설정
-            doorPref.transform.position = m_MeshVertices[0];
+            doorPref.transform.position = m_MeshVertices[Random.Range(0, m_MeshVertices.Count)];
 
             // 문의 방향 설정 (카메라가 있는 곳을 중심으로 회전됨)
             // Vector3 vec = transform.position - doorPref.transform.position;
-            Vector3 vec = GameObject.FindGameObjectWithTag("MainCamera").transform.position - doorPref.transform.position;
-            vec.y = 0f;
-            vec.Normalize();
-            Quaternion q = Quaternion.LookRotation(vec);
-            doorPref.transform.rotation = q;
+            // // Vector3 vec = GameObject.FindGameObjectWithTag("MainCamera").transform.position - doorPref.transform.position;
+            // vec.y = 0f;
+            // vec.Normalize();
+            // Quaternion q = Quaternion.LookRotation(vec);
+            // doorPref.transform.rotation = q;
+            // Vector3 dirToTarge = GameObject.FindGameObjectWithTag("ARCore Device").transform.position - doorPref.transform.position;
+            // doorPref.transform.forward = dirToTarge.normalized;
+
             Debug.Log("====== 위치 배정! ======");
         }
     }

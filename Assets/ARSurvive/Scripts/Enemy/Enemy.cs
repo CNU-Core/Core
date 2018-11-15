@@ -261,7 +261,7 @@ public class Enemy : MonoBehaviour
                 break;
  
             Rotations(player.position);
-            DisCheckToState(player.position, 3f, STATE.IDLE, false);
+            DisCheckToState(player.position, 1f, STATE.IDLE, false);
 
             while(Life){
                 PlayerManager.GetInstance().PlayerAttacked(20);
@@ -271,5 +271,20 @@ public class Enemy : MonoBehaviour
         }
  
         attack = false;
+    }
+
+    // 문에 통과하면 좀비의 랜더링이 변경
+    void OnTriggerExit(Collider col){
+        Debug.Log("트라이거 이벤트 가동! 좀비 마테리얼 변경!");
+        if(col.name == "PortalWindow"){
+            Debug.Log("바뀐다!");
+            Material[] changeMaterial = new Material[1];
+            changeMaterial[0] = Resources.Load("Materials/OutOfZombie", typeof(Material)) as Material;
+            for(int index = 0; index < this.transform.childCount; index ++){
+                if(index != 6){
+                    this.transform.GetChild(index).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                }
+            }
+        }
     }
 }

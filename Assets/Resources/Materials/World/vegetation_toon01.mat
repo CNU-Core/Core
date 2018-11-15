@@ -4,9 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: vegetation_toon04
+  m_Name: vegetation_toon01
   m_Shader: {fileID: 4800000, guid: c69b39e2625e44796b7d9ac57a448d31, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -18,14 +18,19 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 522e1567ec7a1c24fb04eb74381f4aeb, type: 3}
+        m_Texture: {fileID: 2800000, guid: da91d7f6bd2749c4d80649fe12810124, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Cutoff: 0.5
-    - _Shininess: 0.078125
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
     - _StencilTest: 6
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

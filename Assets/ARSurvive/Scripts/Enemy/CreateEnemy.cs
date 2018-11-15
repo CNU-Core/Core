@@ -40,12 +40,12 @@ public class CreateEnemy : MonoBehaviour {
         while (true)
         {
             // 적 머리수가 0이면 소환여부를 false(소환가능)로 전환.
-            if (EnemyCount <= 0)
-            {
-                // Enemy가 다 죽고 리스폰까지 시간지연.
-                yield return new WaitForSeconds(SummonTimeGap);
-                Summon = false;
-            }
+            // if (EnemyCount <= 0)
+            // {
+            //     // Enemy가 다 죽고 리스폰까지 시간지연.
+            //     yield return new WaitForSeconds(SummonTimeGap);
+            //     Summon = false;
+            // }
  
             // 소환된 적이 없으면 적 소환.
             if (!Summon)
