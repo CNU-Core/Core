@@ -279,11 +279,27 @@ public class Enemy : MonoBehaviour
         if(col.name == "PortalWindow"){
             Debug.Log("바뀐다!");
             Material[] changeMaterial = new Material[1];
-            changeMaterial[0] = Resources.Load("Materials/OutOfZombie", typeof(Material)) as Material;
-            for(int index = 0; index < this.transform.childCount; index ++){
-                if(index != 6){
-                    this.transform.GetChild(index).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+            if(this.gameObject.name == "Enemy"){
+                changeMaterial[0] = Resources.Load("Materials/OutOfZombie", typeof(Material)) as Material;
+                for(int index = 0; index < this.transform.childCount; index ++){
+                    if(index != 6){
+                        this.transform.GetChild(index).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                    }
                 }
+            }
+            else if(this.gameObject.name == "Enemy2"){
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfMaterial.001", typeof(Material)) as Material;
+                this.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfMaterial.003", typeof(Material)) as Material;
+                this.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfMaterial.005", typeof(Material)) as Material;
+                this.transform.GetChild(2).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfZombieHQ_material_AlbedoTransparency", typeof(Material)) as Material;
+                this.transform.GetChild(3).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfZombieHQ_material4_Albedo", typeof(Material)) as Material;
+                this.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfZombieHQ_material5_AlbedoTransparency", typeof(Material)) as Material;
+                this.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
             }
         }
     }

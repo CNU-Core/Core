@@ -79,20 +79,26 @@ public class EnemyArea : MonoBehaviour {
             Area.name = "EnemyArea_" + i;                                               // Area의 이름을 정한다.
             RespawnArea.Add(Area.transform);                                            // 리스트에 Area추가.
         }
- 
+
+        StartCoroutine("createEnemy", obj);
+    }
+
+    IEnumerator createEnemy(GameObject obj){
         // 모든 에리어를 자식으로 두는 부모객체.
         for(int i = 0; i < RespawnArea.Count; i++)
         {
             Transform Area = RespawnArea[i];
             Area.parent = obj.transform;                    // 부모 객체지정.
-            if(i==RespawnArea.Count-1){
+            if(i>=RespawnArea.Count-1){
                 Area.gameObject.AddComponent<CreateEnemy>().Name("Enemy2");
             }
             else{
                 Area.gameObject.AddComponent<CreateEnemy>().Name("Enemy");
             }
             //Area.gameObject.AddComponent<CreateEnemy>();    // Area객체에 CreateEnemy 스크립트를 추가.
+            yield return new WaitForSeconds(2f);
         }
+
     }
  
     // 에너미 부모 에리어의 스크립트를 찾아준다.

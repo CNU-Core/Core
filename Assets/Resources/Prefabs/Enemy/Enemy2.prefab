@@ -941,6 +941,7 @@ GameObject:
   - component: {fileID: 95387148044810428}
   - component: {fileID: 54991496408626816}
   - component: {fileID: 65468210914048922}
+  - component: {fileID: 114313738313506634}
   m_Layer: 9
   m_Name: Enemy2
   m_TagString: Enemy
@@ -2558,6 +2559,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114313738313506634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730657676711640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6428d972491634ca07d271e5e8d660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  HP: 150
+  Speed: 1.3
+  TraceDis: 20
 --- !u!137 &137078075813704250
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

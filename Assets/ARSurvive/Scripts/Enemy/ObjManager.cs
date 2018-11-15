@@ -41,7 +41,7 @@ public class ObjManager : MonoBehaviour {
             if(_Name == "Bullet"){ // 총알이 아니면 색을 랜덤으로 설정.
                 obj.transform.GetComponent<SphereCollider>().isTrigger = true;
             }
-            else if (_Name == "Enemy"){
+            else if (_Name == "Enemy" || _Name == "Enemy2"){
                 Debug.Log("좀비생성");    
             }
             else
