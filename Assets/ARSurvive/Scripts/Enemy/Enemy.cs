@@ -127,10 +127,9 @@ public class Enemy : MonoBehaviour
             PlayerManager.GetInstance().AddPlayerScore(100);
             // 내 죽음을 부모에리어에게 알려라!
             // 부모 에리어가 가진 스크립트를 가져와 DeadEnemy()함수를 호출.
-            transform.parent.GetComponent<CreateEnemy>().DeadEnemy();
+            // transform.parent.GetComponent<CreateEnemy>().DeadEnemy();
+            ObjManager.Call().DestroyEnemy();
             gameObject.SetActive(false);
-
-            
             
         }
     }

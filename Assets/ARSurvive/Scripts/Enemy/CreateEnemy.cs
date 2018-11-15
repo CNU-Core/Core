@@ -99,5 +99,9 @@ public class CreateEnemy : MonoBehaviour {
     public void DeadEnemy()
     {
         EnemyCount--;
+        
+        // if(this.EnemyCount <= 0){
+        //     GamesManager.GetInstance().ClearStage();
+        // }
     }
 }

@@ -14,8 +14,6 @@ public class ObjManager : MonoBehaviour {
         MemoryDelete();
         st = null;
     }
-    
-
  
     // 공개
     public GameObject[] Origin;         // 프리팹 원본.
@@ -26,6 +24,20 @@ public class ObjManager : MonoBehaviour {
 
     private PlayerInfomation player;
  
+    void Start(){
+        CreateEnemyArea(10, 0, 1, 0);
+    }
+
+    public void CreateEnemyArea(int areaCount, int areaGap, int createCount, int newEnemyCount){
+        // this.gameObject.AddComponent<EnemyArea>();
+        Debug.Log("ObjManager: " + areaCount +" "+ areaGap +" " + createCount +" "+ newEnemyCount);
+        this.gameObject.GetComponent<EnemyArea>().InitArea(areaCount, areaGap, createCount, newEnemyCount);
+    }
+    
+    public void DestroyEnemy(){
+        this.gameObject.GetComponent<EnemyArea>().DeadEnemy();
+    }
+
     // 오브젝트를 받아 생성.
     public void SetObject( GameObject _Obj, int _Count, string _Name)
     {
@@ -110,7 +122,7 @@ public class ObjManager : MonoBehaviour {
             GameObject obj = Manager[i];
             GameObject.Destroy(obj);
         }
-        Manager = null;
+        Manager.Clear();
     }
  
     // 플레이어의 정보갱신.

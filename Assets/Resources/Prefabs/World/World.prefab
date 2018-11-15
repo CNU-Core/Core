@@ -7048,9 +7048,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RespawnArea: []
-  AreaCount: 10
+  AreaCount: 0
   AreaGap: 0
-  CreateCount: 1
+  CreateCount: 0
 --- !u!114 &114498179163467390
 MonoBehaviour:
   m_ObjectHideFlags: 1

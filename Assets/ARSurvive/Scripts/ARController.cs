@@ -40,6 +40,8 @@ namespace ARSurvive
         private bool PlayingLoginView = true;
         bool showHUD = false;
         bool showOver = false;
+        bool showClear = false;
+        bool showShop = false;
 
 
         [Header("=========== ARCore Controller 설정 ============")]
@@ -73,6 +75,8 @@ namespace ARSurvive
         public GameObject ShopUI;
 
         public GameObject GameOverUI;
+        
+        public GameObject ClearUI;
 
         public GameObject door;
 
@@ -134,16 +138,29 @@ namespace ARSurvive
             if(!showHUD){
                 SearchingForPlaneUI.SetActive(showSearchingUI);
                 ScanningForPlaneUI.SetActive(!showSearchingUI);
-            } else {
-                if(!showOver){
-                    ScanningForPlaneUI.SetActive(!showHUD);
-                    HUDUI.SetActive(showHUD);
-                }
-                else {
-                    HUDUI.SetActive(!showOver);
-                    GameOverUI.SetActive(showOver);
-                }
             }
+            //     if(!showOver){
+            //         if(!showClear){
+            //             if(!showShop){
+            //                 ScanningForPlaneUI.SetActive(!showHUD);
+            //                 ShopUI.SetActive(!showHUD);
+            //                 HUDUI.SetActive(showHUD);
+            //             }
+            //             else {
+            //                 ClearUI.SetActive(!showShop);
+            //                 ShopUI.SetActive(showShop);
+            //             }
+            //         }
+            //         else {
+            //             HUDUI.SetActive(!showClear);
+            //             ClearUI.SetActive(showClear);
+            //         }
+            //     }
+            //     else {
+            //         HUDUI.SetActive(!showOver);
+            //         GameOverUI.SetActive(showOver);
+            //     }
+            // }
 
             // 화면에 터치가 되지 않을 경우, Update함수를 여기까지만 사용할 수 있게 설정
             Touch touch;
@@ -163,23 +180,44 @@ namespace ARSurvive
             Debug.Log("생성됨");
             GameObject.Find("Plane Generator").GetComponent<DetectedPlaneGenerator>().InitRespawn(doorPreb);
             Debug.Log("버튼종료");
-			ObjManager.Call().SetObject("Bullet");
-			ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
+            ScanningForPlaneUI.SetActive(false);
+            HUDUI.SetActive(true);
         }
 
         public void GameOver(){
-            showOver = true;
+            // showOver = true;
             GameOverUI.transform.GetChild(2).gameObject.GetComponent<Text>().text = PlayerManager.GetInstance().player.player_Score.ToString();
+            HUDUI.SetActive(false);
+            GameOverUI.SetActive(true);
+        }
+        
+        public void ClearStage(){
+            // showClear = true;
+            // showHUD = false;
+            ClearUI.transform.GetChild(1).gameObject.GetComponent<Text>().text = GamesManager.GetInstance().stage.ToString();
+            HUDUI.SetActive(false);
+            ClearUI.SetActive(true);
+            Invoke("ViewShop", 3f);
         }
 
+        private void ViewShop(){
+            ClearUI.SetActive(false);
+            ShopUI.SetActive(true);
+        }
+
+        public void NextStage(){
+            ShopUI.SetActive(false);
+            HUDUI.SetActive(true);
+        }
         public void ResetGame(){
             GameOverUI.SetActive(false);
             HUDUI.SetActive(true);
-            showHUD = false;
-            showOver = false;
-            GameObject.Destroy(GameObject.Find("World"));
+            // showHUD = false;
+            // showOver = false;
+            // GameObject.Destroy(GameObject.Find("World"));
             PlayerManager.GetInstance().InitPlayerInformation();
-            this.MakeRespawn();
+            GamesManager.GetInstance().RestartStage();
+            // this.MakeRespawn();
         }
 
         /// <summary> 
