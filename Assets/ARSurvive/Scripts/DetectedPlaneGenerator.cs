@@ -89,7 +89,8 @@ namespace ARSurvive
             doorPref.transform.position = m_MeshVertices[0];
 
             // 문의 방향 설정 (카메라가 있는 곳을 중심으로 회전됨)
-            Vector3 vec = transform.position - doorPref.transform.position;
+            // Vector3 vec = transform.position - doorPref.transform.position;
+            Vector3 vec = GameObject.FindGameObjectWithTag("MainCamera").transform.position - doorPref.transform.position;
             vec.y = 0f;
             vec.Normalize();
             Quaternion q = Quaternion.LookRotation(vec);
