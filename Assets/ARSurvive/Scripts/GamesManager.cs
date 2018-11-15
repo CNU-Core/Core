@@ -36,7 +36,6 @@ public class GamesManager : MonoBehaviour {
 			currentBulletNumber = HUD.gameObject.transform.GetChild(5);
 
 			ObjManager.Call().SetObject("Bullet");
-			ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
 
 			currentBulletNumber.gameObject.GetComponent<Text>().text = realTimeBulletNumber.ToString();
 			this.InitBullet();
@@ -164,7 +163,7 @@ public class GamesManager : MonoBehaviour {
 		
 		ObjManager.Call().gameObject.AddComponent<WreckageManager>();
 		ObjManager.Call().SetObject("Bullet");
-		ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
+		// ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
 	}
 
 	public void RestartStage(){

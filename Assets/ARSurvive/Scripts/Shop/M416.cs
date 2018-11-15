@@ -8,7 +8,7 @@ public class M416 : MonoBehaviour {
 	public string explain = "이것은 M416이다.";
 	public int price = 200; 
 	public string name = "M416";
-	public int damage = 200;
+	public int damage = 60;
 	public Sprite image;
 
 public void setData(){
