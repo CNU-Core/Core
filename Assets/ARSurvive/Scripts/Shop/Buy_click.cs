@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class Buy_click : MonoBehaviour {
+	public GameObject Buy_Canvas;
 	public GameObject GunMenu;
 	public GameObject PotionMenu;
 	public GameObject cantBuy;
@@ -18,10 +19,14 @@ public class Buy_click : MonoBehaviour {
 	public void buyClick(){
 		
 		if(GunMenu.activeSelf){
-			//Debug.Log(playerManager.player.player_Point);
-			if(playerManager.player.player_Point
-			- ShopManager.Instance.gun_price >= 0){
+			int price = int.Parse(ShopManager.instance.select_price.GetComponent<Text>().text.ToString());
+			Debug.Log(price);
+			if(price <= PlayerManager.GetInstance().player.player_Point){
 				ShopManager.instance.gunBuy_check=1;
+				PlayerManager.GetInstance().player.BulletPower = int.Parse(ShopManager.instance.select_damage.GetComponent<Text>().text.ToString());
+				PlayerManager.GetInstance().SubPlayerPoint(price);
+				ShopManager.instance.UpdatePoint();
+				ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
 				PotionMenu.SetActive(true);
 				GunMenu.SetActive(false);
 				Select_menu.SetActive(false);
@@ -45,5 +50,6 @@ public class Buy_click : MonoBehaviour {
 		}
 		current_poiont.GetComponent<Text>().text =  playerManager.player.player_Point.ToString();
 		ShopManager.instance.allBuy_check();
+		SoundManager.I.PlaySFX("charge");
 	}
 }

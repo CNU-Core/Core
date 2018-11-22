@@ -38,6 +38,10 @@ namespace ARSurvive
         [Header("=========== 테스트용 로그인 화면 끄기 ============")]
         [SerializeField]
         private bool PlayingLoginView = true;
+        bool showHUD = false;
+        bool showOver = false;
+        bool showClear = false;
+        bool showShop = false;
 
 
         [Header("=========== ARCore Controller 설정 ============")]
@@ -66,6 +70,14 @@ namespace ARSurvive
         /// </summary>
         public GameObject ScanningForPlaneUI;
 
+        public GameObject HUDUI;
+
+        public GameObject ShopUI;
+
+        public GameObject GameOverUI;
+        
+        public GameObject ClearUI;
+
         public GameObject door;
 
         /// <summary>
@@ -93,8 +105,7 @@ namespace ARSurvive
 
         public void Start(){
             canvas = GameObject.Find("Canvas").transform;
-            // canvas.GetChild(0).GetChild(0).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ StartMenu(); } );
-            ScanningForPlaneUI.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ MakeRespawn();});
+            ScanningForPlaneUI.transform.GetChild(1).gameObject.GetComponent<Button>().onClick.AddListener( delegate{ MakeRespawn(); });
 
             if(!this.PlayingLoginView){
                 this.StartMenu();
@@ -114,6 +125,7 @@ namespace ARSurvive
             // 트레킹 중에는 Snakbar가 사라지게끔 함
             Session.GetTrackables<DetectedPlane>(m_AllPlanes);
             bool showSearchingUI = true;
+
             for (int i = 0; i < m_AllPlanes.Count; i++)
             {
                 if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
@@ -123,8 +135,32 @@ namespace ARSurvive
                 }
             }
 
-            SearchingForPlaneUI.SetActive(showSearchingUI);
-            ScanningForPlaneUI.SetActive(!showSearchingUI);
+            if(!showHUD){
+                SearchingForPlaneUI.SetActive(showSearchingUI);
+                ScanningForPlaneUI.SetActive(!showSearchingUI);
+            }
+            //     if(!showOver){
+            //         if(!showClear){
+            //             if(!showShop){
+            //                 ScanningForPlaneUI.SetActive(!showHUD);
+            //                 ShopUI.SetActive(!showHUD);
+            //                 HUDUI.SetActive(showHUD);
+            //             }
+            //             else {
+            //                 ClearUI.SetActive(!showShop);
+            //                 ShopUI.SetActive(showShop);
+            //             }
+            //         }
+            //         else {
+            //             HUDUI.SetActive(!showClear);
+            //             ClearUI.SetActive(showClear);
+            //         }
+            //     }
+            //     else {
+            //         HUDUI.SetActive(!showOver);
+            //         GameOverUI.SetActive(showOver);
+            //     }
+            // }
 
             // 화면에 터치가 되지 않을 경우, Update함수를 여기까지만 사용할 수 있게 설정
             Touch touch;
@@ -132,60 +168,58 @@ namespace ARSurvive
             {
                 return;
             }
-
-            // // Raycast against the location the player touched to search for planes.
-            // TrackableHit hit;
-            // TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
-            //     TrackableHitFlags.FeaturePointWithSurfaceNormal;
-
-            // if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
-            // {
-            //     // Use hit pose and camera pose to check if hittest is from the
-            //     // back of the plane, if it is, no need to create the anchor.
-            //     if ((hit.Trackable is DetectedPlane) &&
-            //         Vector3.Dot(FirstPersonCamera.transform.position - hit.Pose.position,
-            //             hit.Pose.rotation * Vector3.up) < 0)
-            //     {
-            //         Debug.Log("Hit at back of the current DetectedPlane");
-            //     }
-            //     else
-            //     {
-            //         // Instantiate Andy model at the hit pose.
-            //         var andyObject = Instantiate(AndyAndroidPrefab, hit.Pose.position, hit.Pose.rotation);
-
-            //         // Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
-            //         andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
-
-            //         // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
-            //         // world evolves.
-            //         var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-
-            //         // Make Andy model a child of the anchor.
-            //         andyObject.transform.parent = anchor.transform;
-            //     }
-            // }
         }
-
-        // /// <summary>
-        // /// 스캔완료 버튼을 누를 시 모서리를 알려주는 함수
-        // /// </summary>
-        // private void CheckEdge(){
-        //     DetectedPlanePrefab.GetComponent<DetectedPlaneVisualizer>()._FindEdge(AndyAndroidPrefab);
-        //     Debug.Log("Main LeftTop: " + leftTop);
-        //     Debug.Log("Main RightTop: " + rightTop);
-        //     Debug.Log("Main leftBottom: " + leftBottom);
-        //     Debug.Log("Main rightBottom: " + rightBottom);
-        // }
 
         /// <summary>
         /// 스캔완료 버튼을 누를 시 가동되는 함수
         /// </summary>
         private void MakeRespawn(){
+            showHUD = true;
             Debug.Log("버튼눌림");
             GameObject doorPreb = GameObject.Instantiate(door, Vector3.forward, Quaternion.identity);
             Debug.Log("생성됨");
             GameObject.Find("Plane Generator").GetComponent<DetectedPlaneGenerator>().InitRespawn(doorPreb);
             Debug.Log("버튼종료");
+			ObjManager.Call().SetObject("Bullet");
+            ScanningForPlaneUI.SetActive(false);
+            HUDUI.SetActive(true);
+        }
+
+        public void GameOver(){
+            // showOver = true;
+            GameOverUI.transform.GetChild(2).gameObject.GetComponent<Text>().text = PlayerManager.GetInstance().player.player_Score.ToString();
+            HUDUI.SetActive(false);
+            GameOverUI.SetActive(true);
+            SoundManager.I.ChangeBGM("gameOver");
+        }
+        
+        public void ClearStage(){
+            // showClear = true;
+            // showHUD = false;
+            ClearUI.transform.GetChild(1).gameObject.GetComponent<Text>().text = GamesManager.GetInstance().stage.ToString();
+            HUDUI.SetActive(false);
+            ClearUI.SetActive(true);
+            Invoke("ViewShop", 3f);
+        }
+
+        private void ViewShop(){
+            ClearUI.SetActive(false);
+            ShopUI.SetActive(true);
+        }
+
+        public void NextStage(){
+            ShopUI.SetActive(false);
+            HUDUI.SetActive(true);
+        }
+        public void ResetGame(){
+            GameOverUI.SetActive(false);
+            HUDUI.SetActive(true);
+            // showHUD = false;
+            // showOver = false;
+            // GameObject.Destroy(GameObject.Find("World"));
+            PlayerManager.GetInstance().InitPlayerInformation();
+            GamesManager.GetInstance().RestartStage();
+            // this.MakeRespawn();
         }
 
         /// <summary> 

@@ -7,7 +7,7 @@ public class AKM : MonoBehaviour {
 	public string explain = "이것은 AKM이다.";
 	public int price = 100; 
 	public string name = "AKM";
-	public int damage = 100;
+	public int damage = 40;
 	public Sprite image;
 
 	public void setData(){

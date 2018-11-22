@@ -36,6 +36,7 @@ public class ShopManager : MonoBehaviour {
 	public GameObject Potoin_menu;
 
 	public GameObject block;
+	public Text point;
 	// Use this for initialization
 	public static ShopManager Instance{
 		get{
@@ -50,12 +51,16 @@ public class ShopManager : MonoBehaviour {
 		instance = this;
 		DontDestroyOnLoad(gameObject);
 	}
+
 	void Start(){
-		playerManager = PlayerManager.GetInstance();
-		current_point.GetComponent<Text>().text
-		 = playerManager.player.player_Point.ToString();
+		this.UpdatePoint();
+		SoundManager.I.ChangeBGM("Shop_BGM");
 	}
-	public void setting(){
+
+	public void UpdatePoint(){
+		point.text = PlayerManager.GetInstance().player.player_Point.ToString();
+	}
+public void setting(){
 		if(Gun_menu.activeSelf){
 			if(!preview_Camvas.activeSelf){//화면이 꺼져있는 경우
 				preview_Camvas.SetActive(!preview_Camvas.activeSelf);	
@@ -96,7 +101,7 @@ public class ShopManager : MonoBehaviour {
 				preview_Camvas.SetActive(false);
 			}
 		}
-
+		SoundManager.I.PlaySFX("click");
 	}
 
 	public void active_menu(GameObject button){
@@ -109,6 +114,7 @@ public class ShopManager : MonoBehaviour {
 			Potoin_menu.SetActive(true);
 			preview_Camvas.SetActive(false);
 		}
+		SoundManager.I.PlaySFX("click");
 	}
 
 	public void allBuy_check(){

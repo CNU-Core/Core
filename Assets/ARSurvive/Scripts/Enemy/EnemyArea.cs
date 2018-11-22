@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+
 public class EnemyArea : MonoBehaviour {
  
     public List<Transform> RespawnArea; // 리스폰 구역.
@@ -9,13 +9,25 @@ public class EnemyArea : MonoBehaviour {
     public int AreaCount;   // 에리어 개수.
     public int AreaGap;     // 에리어간 간격.
     public int CreateCount; // 적 머리수.
+
+    int newEnemyCount;
+    
     
     void Start ()
     {
-        CreateArea(AreaCount);
+    }
+    
+    public void InitArea(int areaCount, int areaGap, int createCount, int _newEnemyCount){
+        this.AreaCount = areaCount;
+        this.AreaGap = areaGap;
+        this.CreateCount = createCount;
+        this.newEnemyCount = _newEnemyCount;
+
+        CreateArea(this.AreaCount);
  
         // 에너미 생산 요청.
         ObjManager.Call().SetObject("Enemy");
+        ObjManager.Call().SetObject("Enemy2");
     }
  
     // 위치 랜덤 설정.
@@ -78,14 +90,30 @@ public class EnemyArea : MonoBehaviour {
             Area.name = "EnemyArea_" + i;                                               // Area의 이름을 정한다.
             RespawnArea.Add(Area.transform);                                            // 리스트에 Area추가.
         }
- 
+
+        StartCoroutine("createEnemy", obj);
+    }
+
+    IEnumerator createEnemy(GameObject obj){
         // 모든 에리어를 자식으로 두는 부모객체.
         for(int i = 0; i < RespawnArea.Count; i++)
         {
             Transform Area = RespawnArea[i];
-            Area.parent = obj.transform;                    // 부모 객체지정.
-            Area.gameObject.AddComponent<CreateEnemy>();    // Area객체에 CreateEnemy 스크립트를 추가.
+            Area.parent = obj.transform;  
         }
+
+        for(int i = 0; i < RespawnArea.Count; i++)
+        {                  // 부모 객체지정.
+            if(i >= (RespawnArea.Count - this.newEnemyCount)){
+                obj.transform.GetChild(i).gameObject.AddComponent<CreateEnemy>().Name("Enemy2");
+            }
+            else{
+                obj.transform.GetChild(i).gameObject.AddComponent<CreateEnemy>().Name("Enemy");
+            }
+            //Area.gameObject.AddComponent<CreateEnemy>();    // Area객체에 CreateEnemy 스크립트를 추가.
+            yield return new WaitForSeconds(2f);
+        }
+
     }
  
     // 에너미 부모 에리어의 스크립트를 찾아준다.
@@ -98,5 +126,15 @@ public class EnemyArea : MonoBehaviour {
                 return RespawnArea[i].GetComponent<CreateEnemy>();
         }
         return null;
+    }
+
+    // 에너미가 죽었을 때 수신하는 함수.
+    public void DeadEnemy()
+    {
+        this.AreaCount --;
+        
+        if(this.AreaCount <= 0){
+            GamesManager.GetInstance().ClearStage();
+        }
     }
 }

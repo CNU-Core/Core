@@ -26,8 +26,6 @@ public class Enemy : MonoBehaviour
     private bool walk;
     private bool attack;
  
-    private GameObject playerManager;
-
     // 정보 초기화 함수.
     public void Init()
     {
@@ -50,8 +48,7 @@ public class Enemy : MonoBehaviour
  
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("First Person Camera").transform;
-        playerManager = GameObject.Find("PlayerManager");
+        player = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
  
     // 플레이어와의 거리를 체크.
@@ -127,13 +124,17 @@ public class Enemy : MonoBehaviour
             HP   = 0;       // 체력의 수치가 음의 값으로 갔을 경우를 대비한 초기화.
             Life = false;   // 죽었음을 알림.
             
-            playerManager.GetComponent<PlayerManager>().AddPlayerScore(100);
+            if(this.gameObject.name == "Enemy"){
+                PlayerManager.GetInstance().AddPlayerScore(100);
+            }
+            else if(this.gameObject.name == "Enemy2"){
+                PlayerManager.GetInstance().AddPlayerScore(120);
+            }
             // 내 죽음을 부모에리어에게 알려라!
             // 부모 에리어가 가진 스크립트를 가져와 DeadEnemy()함수를 호출.
-            transform.parent.GetComponent<CreateEnemy>().DeadEnemy();
+            // transform.parent.GetComponent<CreateEnemy>().DeadEnemy();
+            ObjManager.Call().DestroyEnemy();
             gameObject.SetActive(false);
-
-            
             
         }
     }
@@ -264,11 +265,46 @@ public class Enemy : MonoBehaviour
                 break;
  
             Rotations(player.position);
-            DisCheckToState(player.position, 3f, STATE.IDLE, false);
- 
+            DisCheckToState(player.position, 1f, STATE.IDLE, false);
+
+            while(Life){
+                PlayerManager.GetInstance().PlayerAttacked();
+                yield return new WaitForSeconds(2f);
+            }
             yield return null;
         }
  
         attack = false;
+    }
+
+    // 문에 통과하면 좀비의 랜더링이 변경
+    void OnTriggerExit(Collider col){
+        Debug.Log("트라이거 이벤트 가동! 좀비 마테리얼 변경!");
+        if(col.name == "PortalWindow"){
+            Debug.Log("바뀐다!");
+            Material[] changeMaterial = new Material[1];
+            if(this.gameObject.name == "Enemy"){
+                changeMaterial[0] = Resources.Load("Materials/OutOfZombie", typeof(Material)) as Material;
+                for(int index = 0; index < this.transform.childCount; index ++){
+                    if(index != 6){
+                        this.transform.GetChild(index).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                    }
+                }
+            }
+            else if(this.gameObject.name == "Enemy2"){
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfMaterial.001", typeof(Material)) as Material;
+                this.transform.GetChild(0).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfMaterial.003", typeof(Material)) as Material;
+                this.transform.GetChild(1).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfMaterial.005", typeof(Material)) as Material;
+                this.transform.GetChild(2).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfZombieHQ_material_AlbedoTransparency", typeof(Material)) as Material;
+                this.transform.GetChild(3).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfZombieHQ_material4_Albedo", typeof(Material)) as Material;
+                this.transform.GetChild(5).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+                changeMaterial[0] = Resources.Load("Materials/Zombie2/outOfZombieHQ_material5_AlbedoTransparency", typeof(Material)) as Material;
+                this.transform.GetChild(6).gameObject.GetComponent<SkinnedMeshRenderer>().materials = changeMaterial;
+            }
+        }
     }
 }

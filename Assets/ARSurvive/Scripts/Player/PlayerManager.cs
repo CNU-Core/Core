@@ -11,16 +11,10 @@ public class PlayerManager : MonoBehaviour {
 
 	// UI GameObject
 
-	private Transform HUD;//
-	private Transform hp_Bar;// 체력 게이지
-	private Transform score;// 점수
+	private Transform HUD;
+	private Transform hp_Bar;
+	private Transform score_View;
 
-	public GameObject camera;
-
-	public float Speed;         // 움직이는 스피드.
-    public float AttackGap;     // 총알이 발사되는 간격.
-	
-    private bool ContinuouFire; // 게속 발사할 것인가? 에 대한 플래그.
 	
 	void Awake(){
 	}
@@ -33,14 +27,11 @@ public class PlayerManager : MonoBehaviour {
 		else {
 			GameObject.DontDestroyOnLoad(gameObject);
 			Instance = this;
-			// ObjManager.Call().SetObject("Bullet");
-			
-			HUD = GameObject.Find("Canvas").transform.GetChild(4);
-			score = HUD.GetChild(1);
-			hp_Bar = HUD.GetChild(3);
 
+			HUD = GameObject.Find("Canvas").transform.GetChild(4);
+			score_View = HUD.GetChild(1);
+			hp_Bar = HUD.GetChild(3);
 			this.InitPlayerInformation();
-			// ObjManager.Call().PlayerInfoUpdate(); //총알의 각각의 파워를 정의
 		}
 
 	}
@@ -48,14 +39,13 @@ public class PlayerManager : MonoBehaviour {
 	public static PlayerManager GetInstance(){
 		return Instance;
 	}
-
 	// Update is called once per frame
 	void Update () {
-		KeyCheck();
+
 	}
 
 	// Player 정보 초기화
-	void InitPlayerInformation(){
+	public void InitPlayerInformation(){
 		player = new PlayerInfomation();
 		player.MAX_HP = 100;
 		player.player_HP = player.MAX_HP;
@@ -63,77 +53,45 @@ public class PlayerManager : MonoBehaviour {
 		player.player_Point = 0;
 		player.BulletPower = 20;
 
-		AttackGap = 0.2f;
-
-		ContinuouFire = true;
-
 		this.SetHPBar();
+		this.SetScoreView();
 	}
 
 	// Player의 HP 차감
-	void PlayerAttacked(int damage){
-		player.player_HP -= damage;
+	public void PlayerAttacked(){
+		player.player_HP -= player.BulletPower;
 		this.SetHPBar();
+		if(player.player_HP <= 0){
+			GamesManager.GetInstance().GameOver();
+		}
 	}
 
 	// Player의 HP 회복
-	void PlayerHPHeal(int heal){
+	public void PlayerHPHeal(int heal){
 		player.player_HP += heal;
 		this.SetHPBar();
 	}
 
 	// HP Bar 현재 Player의 HP에 따라 길이 달라짐
-	void SetHPBar(){
-		hp_Bar.GetComponent<Image>().fillAmount = player.player_HP * 0.01f;
+	public void SetHPBar(){
+		hp_Bar.gameObject.GetComponent<Image>().fillAmount = player.player_HP * 0.01f;
 	}
 	
 	public void AddPlayerScore(int score){
 		this.player.player_Score += score;
-
+		this.AddPlayerPoint(score / 10);
+		this.SetScoreView();
 	}
 
-	    // 총알 키 체크.
-    void KeyCheck()
-    {
-        if (Input.GetButtonDown("Jump")) //스페이스바로 총알 발사
-            StartCoroutine("NextFire");
-        else if (Input.GetButtonUp("Jump")) 
-            ContinuouFire = false;
- 
-        if (Input.GetKeyDown(KeyCode.Q))
-            ObjManager.Call().MemoryDelete();
- 
-     //   if (Input.GetKeyDown(KeyCode.E))
-     //       ObjManager.Call().CreateObject("Bullet", 20);
- 
-    }
+	private void AddPlayerPoint(int point){
+		this.player.player_Point += point;
+	}
 
-	// 연속발사.
-    IEnumerator NextFire()
-    {
-        ContinuouFire = true;
-        while (ContinuouFire)
-        {
-            // 총알을 리스트에서 가져온다.
-            BulletInfoSetting(ObjManager.Call().GetObject("Bullet"));
-            yield return new WaitForSeconds(AttackGap);
-        }
-    }
- 
-    // 총알정보 셋팅.
-    void BulletInfoSetting(GameObject _Bullet)
-    {
-        if (_Bullet == null) return;
-        Vector3 v = new Vector3(0,-2,0);
-        // Vector3 screenBottom = new Vector3();
-        // screenBottom = transform.position-v;
-        
-        Debug.Log(transform.position);
-        _Bullet.transform.position = camera.transform.position+v;                // 총알의 위치 설정
-        _Bullet.transform.rotation = camera.transform.rotation;                // 총알의 회전 설정.
-        _Bullet.SetActive(true);                                        // 총알을 활성화 시킨다.
-        _Bullet.GetComponent<Bullet>().StartCoroutine("MoveBullet");    // 총알을 움직이게 한다.
-    }
+	public void SubPlayerPoint(int point){
+		this.player.player_Point -= point;
+	}
 
-	
+	void SetScoreView(){
+		score_View.gameObject.GetComponent<Text>().text = this.player.player_Score.ToString();
+	}
 }

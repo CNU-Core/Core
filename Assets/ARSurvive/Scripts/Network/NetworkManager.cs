@@ -47,8 +47,8 @@ public class NetworkManager : MonoBehaviour {
 		// 구글 플레이 기능 설정 및 초기화
 		PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
 		.RequestServerAuthCode(false)
-		.RequestEmail()
-        .RequestIdToken()
+		// .RequestEmail()
+        // .RequestIdToken()
 		.Build();
 
 		PlayGamesPlatform.InitializeInstance(config);
@@ -60,22 +60,29 @@ public class NetworkManager : MonoBehaviour {
 	public void OnClickGoogleGameLogin(){
 		Debug.Log("On Click Google Game Login 실행");
 
+		GameObject controller = GameObject.Find("Controller");
+
 		if(!PlayGamesPlatform.Instance.IsAuthenticated()){
-            Social.localUser.Authenticate(success =>
+            Social.localUser.Authenticate((success,errorMessage) =>
             {
 				// 로그인 성공
                 if (success) {
 					Debug.Log("Login 성공");
-                    StartCoroutine(Login());
+					controller.GetComponent<ARSurvive.ARController>().StartMenu();
                 }
 				// 로그인 실패
                 else {
+#if UNITY_EDITOR
+					controller.GetComponent<ARSurvive.ARController>().StartMenu();
+#endif
 					Debug.Log("On Click 구글 로그인에 실패하였습니다.");
+					Debug.Log("에러 내용: " + errorMessage);
                 }
             });
         }
         else {
-            auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+			controller.GetComponent<ARSurvive.ARController>().StartMenu();
+            // auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
             Debug.Log("다른 버전의 소셜 로컬유저 아이디: " + ((PlayGamesLocalUser)Social.localUser).GetIdToken());
             Debug.Log("소셜 로컬유저 아이디: " + Social.localUser.id);
 		}
@@ -121,6 +128,7 @@ public class NetworkManager : MonoBehaviour {
 		{
 			if(success){
 				Debug.Log("저장 성공");
+				this.ShowLeaderboardUI();
 			}
 			else {
 				Debug.Log("저장 실패");
