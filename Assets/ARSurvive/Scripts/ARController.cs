@@ -158,6 +158,7 @@ namespace ARSurvive
             HUDUI.SetActive(false);
             GameOverUI.SetActive(true);
             GameOverUI.transform.GetChild(2).gameObject.GetComponent<Text>().text = PlayerManager.GetInstance().player.player_Score.ToString();
+            SoundManager.I.ChangeBGM("gameOver");
         }
 
         public void ResetGame(){
