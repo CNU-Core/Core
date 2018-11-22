@@ -94,6 +94,7 @@ public class Enemy : MonoBehaviour
                     {
                         walk = true;
                         StartCoroutine("WalkState");
+                        SoundManager.I.PlaySFX("zombie_walk");
                     }
                     break;
                 }
@@ -103,6 +104,7 @@ public class Enemy : MonoBehaviour
                     {
                         attack = true;
                         StartCoroutine("AttackState");
+                        SoundManager.I.PlaySFX("zombie_attack");
                     }
                     break;
                 }
@@ -141,7 +143,7 @@ public class Enemy : MonoBehaviour
  
     // 폭발은 예술이다.
     void explosion()
-    {
+    {   SoundManager.I.PlaySFX("Zombie_die");
         string Name = "NoData";
         // 잔해물 소환.
         for (int i = 0; i < 4; i++)

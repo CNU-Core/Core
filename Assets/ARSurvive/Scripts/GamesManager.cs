@@ -29,7 +29,7 @@ public class GamesManager : MonoBehaviour {
 		else {
 			GameObject.DontDestroyOnLoad(gameObject);
 			Instance = this;
-
+			SoundManager.I.ChangeBGM("Main_Intro");
 			this.realTimeBulletNumber = 15;
 			this.stage = 1;
 			HUD = GameObject.Find("Canvas").transform.GetChild(4);
@@ -53,6 +53,7 @@ public class GamesManager : MonoBehaviour {
 	void InitBullet(){
 		AttackGap = 30.0f;
 		ContinuouFire = true;
+		SoundManager.I.ChangeBGM("waveStart");
 	}
 
 	public void OnButtonFire(){
@@ -151,6 +152,7 @@ public class GamesManager : MonoBehaviour {
     }
 
 	public void StageSetting(){
+		SoundManager.I.ChangeBGM("waveStart");
 		ObjManager.Call().MemoryDelete();
 		ObjManager.Call().GetComponent<EnemyArea>().RespawnArea.Clear();
 		GameObject.Destroy(GameObject.Find("EnemyArea"));

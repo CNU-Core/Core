@@ -37,6 +37,7 @@ public class Buy_click : MonoBehaviour {
 				ShopManager.instance.allBuy_check();
 				}
 			else{
+				SoundManager.I.PlaySFX("popupOpen");
 				cantBuy.SetActive(true);
 			}
 		}else{
@@ -52,6 +53,7 @@ public class Buy_click : MonoBehaviour {
 				ShopManager.instance.allBuy_check();
 			}else{
 				cantBuy.SetActive(true);
+				SoundManager.I.PlaySFX("popupOpen");
 			}
 		}
 		

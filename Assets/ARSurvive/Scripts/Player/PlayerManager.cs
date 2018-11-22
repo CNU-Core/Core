@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour {
 	private Transform hp_Bar;
 	private Transform score_View;
 
-	
+	private int sound_count=0;
 	void Awake(){
 	}
 
@@ -61,6 +61,18 @@ public class PlayerManager : MonoBehaviour {
 	public void PlayerAttacked(){
 		player.player_HP -= player.BulletPower;
 		this.SetHPBar();
+		
+		if(sound_count == 0){
+			SoundManager.I.PlaySFX("attacked_from_Zombie");
+			sound_count++;
+		}else if(sound_count == 1){
+			SoundManager.I.PlaySFX("scream1");
+			sound_count++;
+		}else{
+			SoundManager.I.PlaySFX("scream2");
+			sound_count = 0;
+		}
+		
 		if(player.player_HP <= 0){
 			GamesManager.GetInstance().GameOver();
 		}

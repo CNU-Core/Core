@@ -138,6 +138,7 @@ namespace ARSurvive
             if(!showHUD){
                 SearchingForPlaneUI.SetActive(showSearchingUI);
                 ScanningForPlaneUI.SetActive(!showSearchingUI);
+                SoundManager.I.PlaySFX("scan");
             }
             //     if(!showOver){
             //         if(!showClear){
@@ -191,6 +192,7 @@ namespace ARSurvive
             HUDUI.SetActive(false);
             GameOverUI.SetActive(true);
             SoundManager.I.ChangeBGM("gameOver");
+            
         }
         
         public void ClearStage(){
@@ -199,6 +201,7 @@ namespace ARSurvive
             ClearUI.transform.GetChild(1).gameObject.GetComponent<Text>().text = GamesManager.GetInstance().stage.ToString();
             HUDUI.SetActive(false);
             ClearUI.SetActive(true);
+            SoundManager.I.ChangeBGM("clear_Game");
             Invoke("ViewShop", 3f);
         }
 
