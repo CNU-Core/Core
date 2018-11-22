@@ -32,6 +32,9 @@ public class Buy_click : MonoBehaviour {
 				Select_menu.SetActive(false);
 				GunButton.GetComponent<Button>().enabled = false;
 				playerManager.player.player_Point = playerManager.player.player_Point - ShopManager.Instance.gun_price;
+				SoundManager.I.PlaySFX("charge");
+				current_poiont.GetComponent<Text>().text =  playerManager.player.player_Point.ToString();
+				ShopManager.instance.allBuy_check();
 				}
 			else{
 				cantBuy.SetActive(true);
@@ -44,12 +47,14 @@ public class Buy_click : MonoBehaviour {
 				Select_menu.SetActive(false);
 				PotionButton.GetComponent<Button>().enabled = false;
 				playerManager.player.player_Point = playerManager.player.player_Point - ShopManager.instance.potion_price;
+				SoundManager.I.PlaySFX("charge");
+				current_poiont.GetComponent<Text>().text =  playerManager.player.player_Point.ToString();
+				ShopManager.instance.allBuy_check();
 			}else{
 				cantBuy.SetActive(true);
 			}
 		}
-		current_poiont.GetComponent<Text>().text =  playerManager.player.player_Point.ToString();
-		ShopManager.instance.allBuy_check();
-		SoundManager.I.PlaySFX("charge");
+		
+		
 	}
 }
