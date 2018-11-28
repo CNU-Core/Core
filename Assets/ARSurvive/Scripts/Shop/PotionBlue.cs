@@ -4,9 +4,9 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class PotionBlue : MonoBehaviour {
-public string explain = "이것은 파란 포션이다.";
+public string explain = "이것은 주황 포션이다.";
 	public int price = 200; 
-	public string name = "Blue";
+	public string name = "Orange";
 	public int heal = 200;
 	public Sprite image;
 
