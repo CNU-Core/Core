@@ -179,6 +179,9 @@ public class GamesManager : MonoBehaviour {
 		if(this.stage == 2){
 			ObjManager.Call().CreateEnemyArea(15, 0, 1, 5);
 		}
+		else if(this.stage == 3){
+        	ObjManager.Call().CreateEnemyArea(15, 0, 1, 10);
+      	}
 	}
 
 	public void ClearStage(){
